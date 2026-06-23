@@ -13,7 +13,7 @@ config_version=5
 config/name="shop-prototype"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/show_image=false
-config/icon="uid://frb37334kxsj"
+config/icon="uid://dli4pbofm6c2h"
 
 [autoload]
 
