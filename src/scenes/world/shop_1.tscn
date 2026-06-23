@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://wk2y0vlal72k"]
+[gd_scene format=4 uid="uid://wk2y0vlal72k"]
 
 [ext_resource type="Texture2D" uid="uid://bgkjxf4qaaa06" path="res://assets/tileset/Modern_Interiors_Free_v2.2/Interiors_free/32x32/Room_Builder_free_32x32.png" id="1_5jxdx"]
 
@@ -234,9 +234,19 @@ texture_region_size = Vector2i(32, 32)
 13:14/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_8vps6"]
+tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_fdiwe")
 
 [node name="Shop1" type="Node2D" unique_id=1216748684]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=821253797]
+[node name="Floor" type="TileMapLayer" parent="." unique_id=821253797]
+tile_map_data = PackedByteArray("AAAFAAkAAAAOAAsAAAAGAAkAAAAPAAsAAAAHAAkAAAAPAAsAAAAIAAkAAAAPAAsAAAAJAAkAAAAPAAsAAAAKAAkAAAAPAAsAAAAGAAoAAAAPAAwAAAAHAAoAAAAPAAwAAAAHAAsAAAAPAAwAAAAIAAsAAAAPAAwAAAAJAAsAAAAPAAwAAAAKAAsAAAAPAAwAAAAKAAwAAAAPAAwAAAAKAAoAAAAPAAwAAAAJAAoAAAAPAAwAAAAIAAoAAAAPAAwAAAAGAAsAAAAPAAwAAAAHAAwAAAAPAAwAAAAIAAwAAAAPAAwAAAAJAAwAAAAPAAwAAAAFAAoAAAAOAAwAAAAFAAsAAAAOAAwAAAAFAAwAAAAOAAwAAAAGAAwAAAAPAAwAAAA=")
 tile_set = SubResource("TileSet_8vps6")
+rendering_quadrant_size = 32
+physics_quadrant_size = 32
+
+[node name="Floor2" type="TileMapLayer" parent="." unique_id=779120538]
+tile_map_data = PackedByteArray("AAAFAAgAAAAHAA4AAAAGAAgAAAAIAA4AAAAHAAgAAAAIAA4AAAAIAAgAAAAIAA4AAAAJAAgAAAAIAA4AAAAKAAgAAAAJAA4AAAAKAAcAAAAJAA0AAAAJAAcAAAAIAA0AAAAIAAcAAAAIAA0AAAAHAAcAAAAIAA0AAAAGAAcAAAAIAA0AAAAFAAcAAAAHAA0AAAA=")
+tile_set = SubResource("TileSet_8vps6")
+rendering_quadrant_size = 32
+physics_quadrant_size = 32
