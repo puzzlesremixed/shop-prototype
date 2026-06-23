@@ -30,10 +30,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer" unique_id=71068471]
+[node name="Hbox" type="HBoxContainer" parent="Control/CenterContainer" unique_id=2051250596]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/Hbox" unique_id=71068471]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/CenterContainer/Hbox/VBoxContainer" unique_id=1354045400]
+layout_mode = 2
+text = "grand"
+label_settings = ExtResource("2_ovsfe")
+
+[node name="Label2" type="Label" parent="Control/CenterContainer/Hbox/VBoxContainer" unique_id=1911540920]
+layout_mode = 2
+text = "trolley"
+label_settings = ExtResource("2_ovsfe")
+
+[node name="Label3" type="Label" parent="Control/CenterContainer/Hbox/VBoxContainer" unique_id=1920892396]
+layout_mode = 2
+text = "adventure"
+label_settings = ExtResource("2_ovsfe")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/CenterContainer/Hbox" unique_id=1173349047]
+custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer" unique_id=1354045400]
+[node name="Button" type="Button" parent="Control/CenterContainer/Hbox/VBoxContainer2" unique_id=1235903748]
 layout_mode = 2
-text = "main menu"
-label_settings = ExtResource("2_ovsfe")
+text = "Start"

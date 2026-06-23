@@ -22,12 +22,23 @@ SceneManager="*uid://dj0n33jlurqpp"
 
 [display]
 
-window/size/viewport_width=1080
+window/size/viewport_width=1280
 window/size/viewport_height=720
 
 [dotnet]
 
 project/assembly_name="shop-prototype"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "gray",
+"res://src/fonts/": "teal",
+"res://src/models/": "orange",
+"res://src/scenes/": "pink",
+"res://src/scripts/": "yellow",
+"res://src/sprites/": "blue"
+}
 
 [input]
 

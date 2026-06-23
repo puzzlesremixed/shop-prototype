@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://tqntagtqf3yr"]
+
+[ext_resource type="PackedScene" uid="uid://wk2y0vlal72k" path="res://src/scenes/environment/shop_1.tscn" id="1_km0hc"]
+[ext_resource type="PackedScene" uid="uid://017kgk3qbxq1" path="res://src/scenes/player/player.tscn" id="2_dr0f3"]
+
+[node name="World1" type="Node2D" unique_id=70678746]
+
+[node name="Shop1" parent="." unique_id=1216748684 instance=ExtResource("1_km0hc")]
+
+[node name="Player" parent="." unique_id=82853052 instance=ExtResource("2_dr0f3")]
+z_index = 1
+position = Vector2(421, 427)
