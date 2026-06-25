@@ -1,6 +1,6 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://deufaos8rtttc"]
 
-[ext_resource type="FontFile" uid="uid://uu6tiex6ck74" path="res://assets/fonts/import/MomoTrustDisplay-Regular.ttf" id="1_p8t8l"]
+[ext_resource type="FontFile" uid="uid://uu6tiex6ck74" path="res://src/fonts/import/MomoTrustDisplay-Regular.ttf" id="1_p8t8l"]
 
 [resource]
 font = ExtResource("1_p8t8l")

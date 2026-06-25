@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://017kgk3qbxq1"]
 
 [ext_resource type="Script" uid="uid://b50xv1n3vqkma" path="res://src/scenes/player/player.gd" id="1_qopur"]
+[ext_resource type="Texture2D" uid="uid://vy3pfer7sntn" path="res://icon.svg" id="2_cx3ie"]
 [ext_resource type="Texture2D" uid="uid://4e0nqacxjjpk" path="res://assets/tileset/Modern_Interiors_Free_v2.2/Characters_free/Adam_idle_anim_16x16.png" id="2_n52bt"]
 [ext_resource type="Texture2D" uid="uid://3ef138b2ffv" path="res://assets/tileset/Modern_Interiors_Free_v2.2/Characters_free/Adam_run_16x16.png" id="3_cx3ie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20lvh"]
+size = Vector2(46, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4rts"]
 size = Vector2(30, 9)
@@ -389,7 +393,19 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=82853052]
 script = ExtResource("1_qopur")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=566334531]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=262356294]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1396015761]
+position = Vector2(0, -22.5)
+shape = SubResource("RectangleShape2D_20lvh")
+debug_color = Color(0.7441144, 0.46146715, 0.1358765, 0.41960785)
+
+[node name="CollisionShapeDebug" type="Sprite2D" parent="InteractionArea" unique_id=605717276]
+position = Vector2(0, -22.5)
+scale = Vector2(0.359375, 0.3828125)
+texture = ExtResource("2_cx3ie")
+
+[node name="Coliision" type="CollisionShape2D" parent="." unique_id=566334531]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_v4rts")
 
@@ -399,3 +415,5 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pvdti")
 animation = &"Walk_Up"
 frame_progress = 0.5824432
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
