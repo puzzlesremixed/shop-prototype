@@ -4,9 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://017kgk3qbxq1" path="res://src/scenes/player/player.tscn" id="2_dr0f3"]
 
 [node name="World1" type="Node2D" unique_id=70678746]
+y_sort_enabled = true
 
 [node name="Shop1" parent="." unique_id=1216748684 instance=ExtResource("1_km0hc")]
 
-[node name="Player" parent="." unique_id=82853052 instance=ExtResource("2_dr0f3")]
-z_index = 1
-position = Vector2(421, 427)
+[node name="Player2" parent="." unique_id=82853052 instance=ExtResource("2_dr0f3")]
+position = Vector2(530, 402)
+
+[editable path="Shop1"]
