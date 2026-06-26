@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="shop_items" format=3 uid="uid://btm8g8x1e1ikr"]
+
+[ext_resource type="Resource" uid="uid://bpl6cmcavtvc0" path="res://src/resources/item_category/dairy.tres" id="1_vrwgv"]
+[ext_resource type="Script" uid="uid://dg0i22mb2y7fc" path="res://src/resources/shop_items_resource.gd" id="2_30wty"]
+[ext_resource type="Texture2D" uid="uid://36q8ii0ilheu" path="res://assets/sprites/shop_items/milk_carton.png" id="2_vrwgv"]
+
+[resource]
+script = ExtResource("2_30wty")
+name = "Milk Carton"
+price = 5
+texture = ExtResource("2_vrwgv")
+category = ExtResource("1_vrwgv")
+metadata/_custom_type_script = "uid://dg0i22mb2y7fc"

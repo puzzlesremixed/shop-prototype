@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="shop_items" format=3 uid="uid://c661vklulormo"]
+
+[ext_resource type="Script" uid="uid://dg0i22mb2y7fc" path="res://src/resources/shop_items_resource.gd" id="1_c01ct"]
+[ext_resource type="Resource" uid="uid://c3yl6wx45w5yu" path="res://src/resources/item_category/snacks.tres" id="1_jynpn"]
+[ext_resource type="Texture2D" uid="uid://cthiu856q0i1g" path="res://assets/sprites/shop_items/snack.png" id="2_jynpn"]
+
+[resource]
+script = ExtResource("1_c01ct")
+name = "Snack"
+price = 1
+texture = ExtResource("2_jynpn")
+category = ExtResource("1_jynpn")
+metadata/_custom_type_script = "uid://dg0i22mb2y7fc"

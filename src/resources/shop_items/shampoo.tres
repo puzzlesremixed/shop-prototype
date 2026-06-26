@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="shop_items" format=3 uid="uid://duyiqcqvtcfc4"]
+
+[ext_resource type="Resource" uid="uid://cnv5o05efqgg2" path="res://src/resources/item_category/households.tres" id="1_dy15j"]
+[ext_resource type="Script" uid="uid://dg0i22mb2y7fc" path="res://src/resources/shop_items_resource.gd" id="1_f4dnx"]
+[ext_resource type="Texture2D" uid="uid://ciipqed7oinp0" path="res://assets/sprites/shop_items/shampoo.png" id="2_dy15j"]
+
+[resource]
+script = ExtResource("1_f4dnx")
+name = "Shampoo"
+price = 2
+texture = ExtResource("2_dy15j")
+category = ExtResource("1_dy15j")
+metadata/_custom_type_script = "uid://dg0i22mb2y7fc"

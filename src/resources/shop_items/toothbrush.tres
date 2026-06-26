@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="shop_items" format=3 uid="uid://plcjxwdaw1y4"]
+
+[ext_resource type="Resource" uid="uid://cnv5o05efqgg2" path="res://src/resources/item_category/households.tres" id="1_qxvah"]
+[ext_resource type="Script" uid="uid://dg0i22mb2y7fc" path="res://src/resources/shop_items_resource.gd" id="2_2j7m5"]
+[ext_resource type="Texture2D" uid="uid://rtyyu4x5nse4" path="res://assets/sprites/shop_items/toothbrush.png" id="2_qxvah"]
+
+[resource]
+script = ExtResource("2_2j7m5")
+name = "Toothbrush"
+price = 3
+texture = ExtResource("2_qxvah")
+category = ExtResource("1_qxvah")
+metadata/_custom_type_script = "uid://dg0i22mb2y7fc"

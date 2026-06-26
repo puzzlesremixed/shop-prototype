@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 # This face up by default
 @onready var interaction_area: Area2D = $InteractionArea 
-var last_facing := "Down"
+var last_facing := "Up"
 
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "up", "down")

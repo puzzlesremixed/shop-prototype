@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dokivvfnee0bw"]
+
+[ext_resource type="Script" uid="uid://ngf56pjppjts" path="res://src/scenes/shop_item.gd" id="1_8l55h"]
+[ext_resource type="Texture2D" uid="uid://bu5f717dwioxl" path="res://assets/sprites/shop_items/carrot.png" id="2_8l55h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvt0r"]
+size = Vector2(20, 9)
+
+[node name="ShopItem" type="Node2D" unique_id=399370054]
+script = ExtResource("1_8l55h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1589167270]
+scale = Vector2(2, 2)
+texture = ExtResource("2_8l55h")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1810474892]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=422387357]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_yvt0r")

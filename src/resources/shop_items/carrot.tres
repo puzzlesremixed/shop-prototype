@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="shop_items" format=3 uid="uid://d3t4y3x280f71"]
+
+[ext_resource type="Resource" uid="uid://cyeoktciyrm05" path="res://src/resources/item_category/vegetables.tres" id="1_6mq7r"]
+[ext_resource type="Texture2D" uid="uid://bu5f717dwioxl" path="res://assets/sprites/shop_items/carrot.png" id="2_6mq7r"]
+[ext_resource type="Script" uid="uid://dg0i22mb2y7fc" path="res://src/resources/shop_items_resource.gd" id="2_cmrce"]
+
+[resource]
+script = ExtResource("2_cmrce")
+name = "Carrot"
+price = 1
+texture = ExtResource("2_6mq7r")
+category = ExtResource("1_6mq7r")
+metadata/_custom_type_script = "uid://dg0i22mb2y7fc"

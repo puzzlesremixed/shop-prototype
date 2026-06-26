@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemCategory" format=3 uid="uid://dyxnh8bugrr3v"]
+
+[ext_resource type="Script" uid="uid://c14rm56m82ijt" path="res://src/resources/item_category_resource.gd" id="1_fnis5"]
+
+[resource]
+script = ExtResource("1_fnis5")
+display_name = "Drink"
+plural_name = "Drinks"
+metadata/_custom_type_script = "uid://c14rm56m82ijt"

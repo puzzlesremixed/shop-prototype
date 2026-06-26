@@ -2,6 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://wk2y0vlal72k" path="res://src/scenes/environment/shop_1.tscn" id="1_km0hc"]
 [ext_resource type="PackedScene" uid="uid://017kgk3qbxq1" path="res://src/scenes/player/player.tscn" id="2_dr0f3"]
+[ext_resource type="PackedScene" uid="uid://dokivvfnee0bw" path="res://src/scenes/shop_item.tscn" id="3_us6xa"]
+[ext_resource type="Resource" uid="uid://btm8g8x1e1ikr" path="res://src/resources/shop_items/milk_carton.tres" id="4_uor0b"]
+[ext_resource type="Resource" uid="uid://duyiqcqvtcfc4" path="res://src/resources/shop_items/shampoo.tres" id="5_uor0b"]
+[ext_resource type="Resource" uid="uid://c661vklulormo" path="res://src/resources/shop_items/snack.tres" id="6_wp4wj"]
+[ext_resource type="Resource" uid="uid://plcjxwdaw1y4" path="res://src/resources/shop_items/toothbrush.tres" id="7_s6mad"]
 
 [node name="World1" type="Node2D" unique_id=70678746]
 y_sort_enabled = true
@@ -10,5 +15,25 @@ y_sort_enabled = true
 
 [node name="Player2" parent="." unique_id=82853052 instance=ExtResource("2_dr0f3")]
 position = Vector2(530, 402)
+
+[node name="MilkCarton" parent="." unique_id=399370054 instance=ExtResource("3_us6xa")]
+z_index = 5
+position = Vector2(293, 465)
+item_stats = ExtResource("4_uor0b")
+
+[node name="Shampoo" parent="." unique_id=513618837 instance=ExtResource("3_us6xa")]
+z_index = 5
+position = Vector2(316, 465)
+item_stats = ExtResource("5_uor0b")
+
+[node name="Snack" parent="." unique_id=1537500328 instance=ExtResource("3_us6xa")]
+z_index = 5
+position = Vector2(422, 465)
+item_stats = ExtResource("6_wp4wj")
+
+[node name="Toothbrush" parent="." unique_id=784185092 instance=ExtResource("3_us6xa")]
+z_index = 5
+position = Vector2(445, 465)
+item_stats = ExtResource("7_s6mad")
 
 [editable path="Shop1"]
