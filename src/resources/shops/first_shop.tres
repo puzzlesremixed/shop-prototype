@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="shop" format=3 uid="uid://cdascbum2pd0e"]
+
+[ext_resource type="Script" uid="uid://dr0wjhrfpp5qy" path="res://src/resources/shop_resource.gd" id="1_cxkkq"]
+
+[resource]
+script = ExtResource("1_cxkkq")
+name = "Warung Mang Dura"
+starting_money = 15000
+starting_rating = 300
+customer_generation = 2
+metadata/_custom_type_script = "uid://dr0wjhrfpp5qy"

@@ -5,8 +5,6 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(item_stats.name)
-	print(item_stats.texture)
 	sprite.texture = item_stats.texture
 
 

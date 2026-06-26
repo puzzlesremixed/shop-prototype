@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxa2pwgnch8qi"
-path="res://.godot/imported/Interiors_free_32x32.png-5d79bbdb8f67b81116f0ba10e6eb951b.ctex"
+uid="uid://cbpcuhac7kpbr"
+path="res://.godot/imported/shelf_empty.png-b642e146964f11b690a42c73505081eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset/Modern_Interiors_Free_v2.2/Interiors_free/32x32/Interiors_free_32x32.png"
-dest_files=["res://.godot/imported/Interiors_free_32x32.png-5d79bbdb8f67b81116f0ba10e6eb951b.ctex"]
+source_file="res://assets/sprites/shelf_empty.png"
+dest_files=["res://.godot/imported/shelf_empty.png-b642e146964f11b690a42c73505081eb.ctex"]
 
 [params]
 

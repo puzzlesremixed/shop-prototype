@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxa2pwgnch8qi"
-path="res://.godot/imported/Interiors_free_32x32.png-5d79bbdb8f67b81116f0ba10e6eb951b.ctex"
+uid="uid://et05bn3c0804"
+path="res://.godot/imported/glass_door (1).png-9129653aa5409dea9459ee277e282afb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset/Modern_Interiors_Free_v2.2/Interiors_free/32x32/Interiors_free_32x32.png"
-dest_files=["res://.godot/imported/Interiors_free_32x32.png-5d79bbdb8f67b81116f0ba10e6eb951b.ctex"]
+source_file="res://assets/sprites/glass_door (1).png"
+dest_files=["res://.godot/imported/glass_door (1).png-9129653aa5409dea9459ee277e282afb.ctex"]
 
 [params]
 

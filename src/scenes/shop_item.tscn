@@ -13,8 +13,8 @@ script = ExtResource("1_8l55h")
 scale = Vector2(2, 2)
 texture = ExtResource("2_8l55h")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1810474892]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1810474892]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=422387357]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=422387357]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_yvt0r")
