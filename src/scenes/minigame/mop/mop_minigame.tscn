@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://yrslf4pb5aq7"]
+
+[ext_resource type="Texture2D" uid="uid://cr4ts4fv5do7q" path="res://assets/sprites/minigame/mop/panel.svg" id="1_7mmsj"]
+[ext_resource type="Texture2D" uid="uid://fcfvnij3tffa" path="res://assets/sprites/minigame/mop/mop_tile_clean.png" id="2_sindb"]
+[ext_resource type="Texture2D" uid="uid://cl64t7yphvtvg" path="res://assets/sprites/minigame/mop/mop.png" id="3_ox7lh"]
+[ext_resource type="Script" uid="uid://b371iqx114n44" path="res://src/scripts/minigame/mop/mop_tile.gd" id="4_f527q"]
+[ext_resource type="Script" uid="uid://ewxfor26qq3s" path="res://src/scripts/minigame/mop/mop.gd" id="4_ox7lh"]
+[ext_resource type="Shader" uid="uid://hp1n6lisvruh" path="res://src/shaders/minigame/mop/mop_tile.gdshader" id="5_q6evg"]
+[ext_resource type="Texture2D" uid="uid://cgjui8lg41d2u" path="res://assets/sprites/minigame/mop/mop_tile_dirty.png" id="7_rl67s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6evg"]
+shader = ExtResource("5_q6evg")
+shader_parameter/texture2 = ExtResource("2_sindb")
+shader_parameter/blend_amount = 0.0
+
+[node name="MopMinigame" type="Node2D" unique_id=222995902]
+
+[node name="Panel" type="Sprite2D" parent="." unique_id=744175165]
+clip_children = 2
+position = Vector2(910.63025, 418.84686)
+scale = Vector2(0.6091549, 0.6091549)
+texture = ExtResource("1_7mmsj")
+
+[node name="Mop" type="Area2D" parent="." unique_id=2069426507]
+z_index = 1
+position = Vector2(660, 625)
+script = ExtResource("4_ox7lh")
+
+[node name="MopSprite" type="Sprite2D" parent="Mop" unique_id=941884617]
+scale = Vector2(0.45973888, 0.45973888)
+texture = ExtResource("3_ox7lh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mop" unique_id=956885435]
+polygon = PackedVector2Array(-47, 33, 115, -135, -7, -222, -8, -251, 21, -286, 289, -82, 289, -70, 229, -59, 135, -120, 14, 80)
+
+[node name="MopTile" type="Area2D" parent="." unique_id=1189979856 groups=["mop_tiles"]]
+position = Vector2(913, 421)
+script = ExtResource("4_f527q")
+
+[node name="MopTileMask" type="Sprite2D" parent="MopTile" unique_id=2060480559]
+clip_children = 2
+scale = Vector2(0.59708244, 0.59708244)
+texture = ExtResource("1_7mmsj")
+
+[node name="MopTile" type="Sprite2D" parent="MopTile/MopTileMask" unique_id=2093072540]
+material = SubResource("ShaderMaterial_q6evg")
+position = Vector2(12.325989, -7.7931824)
+scale = Vector2(1.0904204, 1.0904204)
+texture = ExtResource("7_rl67s")
+region_rect = Rect2(0, 0, 1149, 928)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MopTile" unique_id=696280405]
+position = Vector2(59, 12)
+polygon = PackedVector2Array(-195, -121, -88, -154, -57, -132, 3, -119, 40, -88, 60, -59, 79, -26, 42, 3, -10, 21, -20, 80, 0, 82, 69, 95, 143, 128, 157, 164, 173, 210, 175, 239, 116, 271, 52, 265, 6, 275, -59, 276, -96, 250, -127, 198, -145, 133, -187, 142, -245, 109, -253, 75, -291, 44, -332, -18, -260, -54, -246, -69, -221, -103)

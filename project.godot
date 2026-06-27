@@ -22,6 +22,7 @@ Global="*uid://cn15d11n0whqq"
 SceneManager="*uid://dj0n33jlurqpp"
 ItemReference="*uid://bdrjwbgrwesmw"
 DropZone1="*uid://ct1tmyu3bfi4q"
+SplashUI="*uid://cyramo8ykcud7"
 
 [display]
 
