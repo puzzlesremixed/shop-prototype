@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cbphwvfnaeuh0"]
+
+[ext_resource type="Script" uid="uid://ct1tmyu3bfi4q" path="res://src/scripts/minigame/box/box_dropzone.gd" id="1_e6bu4"]
+[ext_resource type="Texture2D" uid="uid://lepqpih3wan" path="res://assets/sprites/minigame/box/arrow_helper.svg" id="2_c6nnk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neqb5"]
+size = Vector2(387.91968, 260.9643)
+
+[node name="DropZone_1" type="Area2D" unique_id=781378850 groups=["drop_zones"]]
+script = ExtResource("1_e6bu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2037947810]
+shape = SubResource("RectangleShape2D_neqb5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=551856863]
+position = Vector2(0, -450.82663)
+scale = Vector2(18.275, 18.275)
+texture = ExtResource("2_c6nnk")
