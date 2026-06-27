@@ -20,6 +20,8 @@ config/icon="uid://dli4pbofm6c2h"
 
 Global="*uid://cn15d11n0whqq"
 SceneManager="*uid://dj0n33jlurqpp"
+ItemReference="*uid://bdrjwbgrwesmw"
+DropZone1="*uid://ct1tmyu3bfi4q"
 
 [display]
 
