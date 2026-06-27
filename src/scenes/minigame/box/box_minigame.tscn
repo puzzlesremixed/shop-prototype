@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://co4ymslngupfi"]
+
+[ext_resource type="Texture2D" uid="uid://b3m2x4061m8p2" path="res://assets/sprites/minigame/box/panel.svg" id="2_jrl2x"]
+[ext_resource type="Texture2D" uid="uid://cpgwuf8hnuu1g" path="res://assets/sprites/minigame/box/shelf.svg" id="3_dlndc"]
+[ext_resource type="Script" uid="uid://btjvuj2adyksy" path="res://src/scripts/minigame/box/box_dropzone_manager.gd" id="4_q2ulk"]
+[ext_resource type="PackedScene" uid="uid://cbphwvfnaeuh0" path="res://src/scenes/minigame/box/box_minigame_dropzone.tscn" id="5_48ehv"]
+[ext_resource type="Texture2D" uid="uid://c8w4imdvdmdoj" path="res://assets/sprites/minigame/box/basket.svg" id="6_6qvcs"]
+[ext_resource type="PackedScene" uid="uid://bmd3d46dt655y" path="res://src/scenes/minigame/box/box_item.tscn" id="7_u065y"]
+[ext_resource type="PackedScene" uid="uid://dlfudb4wsfh67" path="res://src/scenes/minigame/box/box_item_reference.tscn" id="8_fybrb"]
+
+[node name="BoxMinigame" type="Node2D" unique_id=1089611278]
+
+[node name="PanelDecor" type="Sprite2D" parent="." unique_id=461273320]
+z_index = -2
+position = Vector2(898.1261, 413.5)
+scale = Vector2(0.7478006, 0.7280285)
+texture = ExtResource("2_jrl2x")
+
+[node name="Shelf" type="Sprite2D" parent="." unique_id=181564994]
+z_index = -2
+position = Vector2(950.82184, 496.6948)
+scale = Vector2(0.21267287, 0.21267287)
+texture = ExtResource("3_dlndc")
+
+[node name="DropZones" type="Node2D" parent="Shelf" unique_id=2067211278 node_paths=PackedStringArray("visual_guide_container")]
+position = Vector2(160.70766, 1.4350973)
+script = ExtResource("4_q2ulk")
+visual_guide_container = NodePath("../../ItemReference")
+
+[node name="DropZone_1" parent="Shelf/DropZones" unique_id=781378850 instance=ExtResource("5_48ehv")]
+position = Vector2(-972, -398.24)
+
+[node name="DropZone_2" parent="Shelf/DropZones" unique_id=238572719 instance=ExtResource("5_48ehv")]
+position = Vector2(-427, -398.24)
+
+[node name="DropZone_3" parent="Shelf/DropZones" unique_id=2123467548 instance=ExtResource("5_48ehv")]
+position = Vector2(118, -398.24)
+
+[node name="DropZone_4" parent="Shelf/DropZones" unique_id=61068564 instance=ExtResource("5_48ehv")]
+position = Vector2(663, -398.24)
+
+[node name="Basket" type="Sprite2D" parent="." unique_id=2097415125]
+position = Vector2(228.00002, 675)
+scale = Vector2(0.4621703, 0.46217033)
+texture = ExtResource("6_6qvcs")
+
+[node name="Items" type="Node2D" parent="." unique_id=890025723]
+z_index = -1
+position = Vector2(176, 530)
+
+[node name="BoxShopItem_1" parent="Items" unique_id=978726460 instance=ExtResource("7_u065y")]
+position = Vector2(6, 28)
+
+[node name="BoxShopItem_2" parent="Items" unique_id=1572773664 instance=ExtResource("7_u065y")]
+position = Vector2(64, 35)
+item_type = 2
+
+[node name="BoxShopItem_3" parent="Items" unique_id=146383402 instance=ExtResource("7_u065y")]
+position = Vector2(63, -6)
+item_type = 1
+
+[node name="BoxShopItem_4" parent="Items" unique_id=166637664 instance=ExtResource("7_u065y")]
+position = Vector2(115, 38)
+item_type = 4
+
+[node name="ItemReference" parent="." unique_id=1120212372 instance=ExtResource("8_fybrb")]
+position = Vector2(1121, 214)
+scale = Vector2(0.6, 0.6)
+targets = Array[int]([0, 1, 4, 2])

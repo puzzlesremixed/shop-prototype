@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dlfudb4wsfh67"]
+
+[ext_resource type="Script" uid="uid://bdrjwbgrwesmw" path="res://src/scripts/minigame/box/box_item_reference.gd" id="1_sgodf"]
+[ext_resource type="Texture2D" uid="uid://36q8ii0ilheu" path="res://assets/sprites/shop_items/milk_carton.png" id="2_d4h52"]
+[ext_resource type="Texture2D" uid="uid://bu5f717dwioxl" path="res://assets/sprites/shop_items/carrot.png" id="3_wuor2"]
+[ext_resource type="Texture2D" uid="uid://ciipqed7oinp0" path="res://assets/sprites/shop_items/shampoo.png" id="4_emcvm"]
+[ext_resource type="Texture2D" uid="uid://cthiu856q0i1g" path="res://assets/sprites/shop_items/snack.png" id="5_w75dj"]
+
+[node name="ItemReference" type="Node2D" unique_id=1120212372]
+script = ExtResource("1_sgodf")
+
+[node name="Slot_1" type="Sprite2D" parent="." unique_id=76877664]
+position = Vector2(-140, 0)
+scale = Vector2(10.46, 10.46)
+texture = ExtResource("2_d4h52")
+
+[node name="Slot_2" type="Sprite2D" parent="." unique_id=325427619]
+position = Vector2(-48, 0)
+scale = Vector2(10.46, 10.46)
+texture = ExtResource("3_wuor2")
+
+[node name="Slot_3" type="Sprite2D" parent="." unique_id=1223446625]
+position = Vector2(48, 0)
+scale = Vector2(10.46, 10.46)
+texture = ExtResource("4_emcvm")
+
+[node name="Slot_4" type="Sprite2D" parent="." unique_id=891252187]
+position = Vector2(140, 0)
+scale = Vector2(10.46, 10.46)
+texture = ExtResource("5_w75dj")

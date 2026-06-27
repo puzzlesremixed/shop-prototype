@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://swj5lm5wpv2c"]
+
+[ext_resource type="Texture2D" path="res://assets/Group 94.svg" id="1_1gfll"]
+[ext_resource type="Texture2D" path="res://assets/Shelf.svg" id="2_485dd"]
+
+[node name="Shelf1" type="Node2D" unique_id=1748424137]
+
+[node name="Shelf" type="Node2D" parent="." unique_id=1054905633]
+scale = Vector2(0.31, 0.31)
+
+[node name="Sprite2D" type="Sprite2D" parent="Shelf" unique_id=1787887919]
+position = Vector2(981.3982, 553.9033)
+scale = Vector2(0.20368326, 0.19333771)
+texture = ExtResource("1_1gfll")
+
+[node name="ShelfPanel" type="Node2D" parent="." unique_id=1637388556]
+z_index = -1
+scale = Vector2(0.31, 0.31)
+
+[node name="Sprite2D" type="Sprite2D" parent="ShelfPanel" unique_id=1054969942]
+position = Vector2(888.5313, 410.64618)
+scale = Vector2(0.7583784, 0.73075086)
+texture = ExtResource("2_485dd")
