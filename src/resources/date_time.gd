@@ -85,3 +85,10 @@ func get_date_string() -> String:
 		minute,
 		second
 	]
+	
+func get_month_label()-> String:
+	return MONTHS_LABELS[month-1]
+	
+var MONTHS_LABELS : Array[String] = [
+'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November' , 'December'
+]
