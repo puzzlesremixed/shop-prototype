@@ -10,7 +10,6 @@ enum PopupType {SUCCESS, DESTRUCTIVE, WARNING, INFO}
 
 @onready var arrow_sprite = $Sprite2D
 
-
 var is_occupied: bool = false
 var current_item: Area2D = null
 
@@ -26,6 +25,7 @@ func occupy_zone(item: Area2D) -> void:
 	var manager = get_parent() as DropZoneManager
 	if manager and manager.is_complete():
 		show_popup("Task Completed!", 1.0, PopupType.SUCCESS)
+
 func clear_zone() -> void:
 	is_occupied = false
 	arrow_sprite.visible = true
@@ -51,16 +51,16 @@ func start_arrow_bounce_animation() -> void:
 			.set_ease(Tween.EASE_IN)
 
 func show_popup(text: String, duration_popup: float, type: PopupType = PopupType.INFO) -> void:
-	# 1. Create the CanvasLayer so it locks to the screen
+	# Create the CanvasLayer so it locks to the screen
 	var canvas_layer = CanvasLayer.new()
 	add_child(canvas_layer)
 	
-	# 2. Create a CenterContainer to handle alignment automatically
+	# Create a CenterContainer to handle alignment automatically
 	var center_container = CenterContainer.new()
 	center_container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT) # Fill the screen
 	canvas_layer.add_child(center_container)
 	
-	# 3. Create the Label for the text
+	# Create the Label for the text
 	var label = Label.new()
 	label.text = text
 	
@@ -71,17 +71,17 @@ func show_popup(text: String, duration_popup: float, type: PopupType = PopupType
 	# Match the type to assign specific colors and font sizes
 	match type:
 		PopupType.SUCCESS:
-			text_color = Color("2ecc71") # Vibrant Green
+			text_color = Color("2ecc71")
 			font_size = 36
 		PopupType.DESTRUCTIVE:
-			text_color = Color("e74c3c") # Vibrant Red
-			font_size = 42 # Slightly larger for urgency
+			text_color = Color("e74c3c")
+			font_size = 42
 		PopupType.WARNING:
-			text_color = Color("f1c40f") # Vibrant Yellow
+			text_color = Color("f1c40f")
 			font_size = 36
 		PopupType.INFO:
-			text_color = Color("3498db") # Vibrant Blue
-			font_size = 32 # Standard size
+			text_color = Color("3498db")
+			font_size = 32
 			
 	# Apply the overrides
 	label.add_theme_font_size_override("font_size", font_size)
@@ -93,7 +93,7 @@ func show_popup(text: String, duration_popup: float, type: PopupType = PopupType
 
 	center_container.add_child(label)
 	
-	# 4. Animate it! (An elegant fade-in and fade-out)
+	# Start Animations
 	label.modulate.a = 0.0 # Start invisible
 	
 	var tween = create_tween()
@@ -104,5 +104,5 @@ func show_popup(text: String, duration_popup: float, type: PopupType = PopupType
 	# Fade out over 0.5 seconds
 	tween.tween_property(label, "modulate:a", 0.0, 0.5)
 	
-	# 5. Clean up everything automatically when the animation finishes
+	# Clean up everything automatically when the animation finishes
 	tween.finished.connect(canvas_layer.queue_free)

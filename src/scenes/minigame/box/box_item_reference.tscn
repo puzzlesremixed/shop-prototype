@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlfudb4wsfh67"]
 
-[ext_resource type="Script" uid="uid://bdrjwbgrwesmw" path="res://src/scenes/minigame/box/item_reference.gd" id="1_sgodf"]
+[ext_resource type="Script" uid="uid://bdrjwbgrwesmw" path="res://src/scripts/minigame/box/box_item_reference.gd" id="1_sgodf"]
 [ext_resource type="Texture2D" uid="uid://36q8ii0ilheu" path="res://assets/sprites/shop_items/milk_carton.png" id="2_d4h52"]
 [ext_resource type="Texture2D" uid="uid://bu5f717dwioxl" path="res://assets/sprites/shop_items/carrot.png" id="3_wuor2"]
 [ext_resource type="Texture2D" uid="uid://ciipqed7oinp0" path="res://assets/sprites/shop_items/shampoo.png" id="4_emcvm"]
