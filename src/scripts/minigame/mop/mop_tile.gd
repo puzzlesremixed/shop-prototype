@@ -23,7 +23,7 @@ func set_transition_percentage(percent: float):
 	mop_tile_sprite.material.set_shader_parameter("blend_amount", blend_value)
 
 func clean(increment_amount: int) -> void:
-	if completed: 
+	if completed:
 		return
 	
 	dirt_level -= increment_amount
@@ -32,4 +32,5 @@ func clean(increment_amount: int) -> void:
 	if dirt_level <= 0:
 		completed = true
 		SplashUI.show_popup("Task Completed!", 1.0, SplashUI.PopupType.SUCCESS)
+		$SFX_Complete.play()
 		return

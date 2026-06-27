@@ -23,6 +23,7 @@ func occupy_zone(item: Area2D) -> void:
 	var manager = get_parent() as DropZoneManager
 	if manager and manager.is_complete():
 		SplashUI.show_popup("Task Completed!", 1.0, SplashUI.PopupType.SUCCESS)
+		$SFX_Complete.play()
 
 func clear_zone() -> void:
 	is_occupied = false
