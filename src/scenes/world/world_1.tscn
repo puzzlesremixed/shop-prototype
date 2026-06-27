@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bavk74fdocpku" path="res://src/scripts/timesystem.gd" id="6_es143"]
 [ext_resource type="Script" uid="uid://bx8x1aittve26" path="res://src/resources/date_time.gd" id="7_wp4wj"]
 [ext_resource type="PackedScene" uid="uid://4mxe0f6r0eoh" path="res://src/scenes/ui/hud.tscn" id="8_s6mad"]
+[ext_resource type="Script" uid="uid://dj8nrcvt7tiuf" path="res://src/scripts/money_system.gd" id="9_6yo62"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjhph"]
 texture = ExtResource("3_ve48q")
@@ -46,13 +47,17 @@ position_smoothing_speed = 6.0
 [node name="Timesystem" type="Node" parent="." unique_id=1961442403]
 script = ExtResource("6_es143")
 date_time = SubResource("Resource_wp4wj")
-ticks_per_sec = 4500
 metadata/_custom_type_script = "uid://bavk74fdocpku"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1024478136]
 
 [node name="HUD" parent="CanvasLayer" unique_id=292680249 instance=ExtResource("8_s6mad")]
 
+[node name="MoneySystem" type="Node" parent="." unique_id=1738306201]
+script = ExtResource("9_6yo62")
+metadata/_custom_type_script = "uid://dj8nrcvt7tiuf"
+
 [connection signal="updated" from="Timesystem" to="CanvasLayer/HUD" method="_on_timesystem_updated"]
+[connection signal="balance_updated" from="MoneySystem" to="CanvasLayer/HUD" method="_on_money_system_balance_updated"]
 
 [editable path="Shop1"]
