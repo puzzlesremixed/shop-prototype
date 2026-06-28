@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bx8x1aittve26" path="res://src/resources/date_time.gd" id="7_wp4wj"]
 [ext_resource type="PackedScene" uid="uid://4mxe0f6r0eoh" path="res://src/scenes/ui/hud.tscn" id="8_s6mad"]
 [ext_resource type="Script" uid="uid://dj8nrcvt7tiuf" path="res://src/scripts/money_system.gd" id="9_6yo62"]
+[ext_resource type="PackedScene" uid="uid://bn5bk7amu0sj" path="res://src/scenes/peeps/guest.tscn" id="10_ve48q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjhph"]
 texture = ExtResource("3_ve48q")
@@ -36,7 +37,7 @@ tile_set = SubResource("TileSet_yvt0r")
 position = Vector2(0, 1)
 
 [node name="Player2" parent="." unique_id=82853052 instance=ExtResource("2_dr0f3")]
-position = Vector2(530, 402)
+position = Vector2(519, 372)
 
 [node name="Camera2D" type="Camera2D" parent="Player2" unique_id=997158421]
 position = Vector2(4, -14)
@@ -56,6 +57,9 @@ metadata/_custom_type_script = "uid://bavk74fdocpku"
 [node name="MoneySystem" type="Node" parent="." unique_id=1738306201]
 script = ExtResource("9_6yo62")
 metadata/_custom_type_script = "uid://dj8nrcvt7tiuf"
+
+[node name="Guest" parent="." unique_id=369888613 instance=ExtResource("10_ve48q")]
+position = Vector2(715, 333)
 
 [connection signal="updated" from="Timesystem" to="CanvasLayer/HUD" method="_on_timesystem_updated"]
 [connection signal="balance_updated" from="MoneySystem" to="CanvasLayer/HUD" method="_on_money_system_balance_updated"]

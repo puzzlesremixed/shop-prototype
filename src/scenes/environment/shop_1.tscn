@@ -1220,6 +1220,9 @@ size = Vector2(62, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvt0r"]
 size = Vector2(34, 94)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bupo"]
+size = Vector2(40.5, 67)
+
 [node name="Shop1" type="Node2D" unique_id=1216748684]
 y_sort_enabled = true
 
@@ -1243,9 +1246,10 @@ tile_set = SubResource("TileSet_8vps6")
 
 [node name="Door" type="Sprite2D" parent="Door" unique_id=1172087050]
 y_sort_enabled = true
-position = Vector2(768, 256)
+position = Vector2(768, 272)
 scale = Vector2(2, 2)
 texture = ExtResource("3_s2udr")
+offset = Vector2(0, -7.66)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=834330954]
 position = Vector2(768, 283)
@@ -1339,13 +1343,24 @@ items = Array[ExtResource("5_nqh3s")]([ExtResource("6_xi7gi"), ExtResource("7_o0
 position = Vector2(777, 447)
 items = Array[ExtResource("5_nqh3s")]([ExtResource("7_o0di7"), ExtResource("9_yn3l1"), ExtResource("10_hegtu"), ExtResource("10_hegtu"), ExtResource("9_yn3l1"), ExtResource("8_q0tbl"), ExtResource("7_o0di7"), ExtResource("6_xi7gi")])
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2104066321]
+[node name="CashierCounter" type="Area2D" parent="." unique_id=2104066321]
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=464980860]
+[node name="Sprite2D" type="Sprite2D" parent="CashierCounter" unique_id=464980860]
 position = Vector2(300, 322)
 scale = Vector2(2, 2)
 texture = ExtResource("11_xi7gi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2065917325]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CashierCounter" unique_id=2065917325]
 position = Vector2(301, 335)
 shape = SubResource("RectangleShape2D_yvt0r")
+one_way_collision_margin = 128.0
+
+[node name="InteractArea" type="Area2D" parent="CashierCounter" unique_id=896041907]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CashierCounter/InteractArea" unique_id=668700150]
+position = Vector2(257.25, 326)
+shape = SubResource("RectangleShape2D_4bupo")
+debug_color = Color(0.75409657, 0.45227277, 0.18486893, 0.41960785)
+
+[node name="GuestSpawnPoint" type="Marker2D" parent="." unique_id=1410012850]
+position = Vector2(768, 228)
