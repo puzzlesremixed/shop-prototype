@@ -4,23 +4,23 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 # This face up by default
-@onready var interaction_area: Area2D = $InteractionArea 
+@onready var interaction_area: Area2D = $InteractionArea
 var last_facing := "Up"
 
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 
 	# horizontal priority
-	if input_dir.x != 0:
-		input_dir.y = 0
-	elif input_dir.y != 0:
-		input_dir.x = 0
+	# if input_dir.x != 0:
+		# input_dir.y = 0
+	# elif input_dir.y != 0:
+		# input_dir.x = 0
 		
 	# Restrict movement to 4 directions
-	if abs(input_dir.x) > abs(input_dir.y):
-		input_dir.y = 0
-	else:
-		input_dir.x = 0
+	# if abs(input_dir.x) > abs(input_dir.y):
+	# 	input_dir.y = 0
+	# else:
+	# 	input_dir.x = 0
 		
 		
 	velocity = input_dir * SPEED

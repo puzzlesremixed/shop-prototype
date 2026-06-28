@@ -33,6 +33,7 @@ func _input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> voi
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			is_dragging = true
+			$SFX_Click.play()
 			mouse_offset = global_position - get_global_mouse_position()
 			
 			# Pop it to the front layer while dragging
@@ -72,9 +73,11 @@ func _try_drop_item() -> void:
 				global_position = area.global_position
 				area.occupy_zone(self)
 				successfully_placed = true
+				$SFX_Drop.play()
 				break
 			else:
-				DropZone1.show_popup("Incorrect Placement!", 1.0, DropZone1.PopupType.DESTRUCTIVE)
+				SplashUI.show_popup("Incorrect Placement!", 1.0, SplashUI.PopupType.DESTRUCTIVE)
+				$SFX_InvalidPlacement.play()
 				ItemReference.play_camera_shake()
 							
 	if not successfully_placed:
