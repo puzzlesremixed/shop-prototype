@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dj8nrcvt7tiuf" path="res://src/scripts/money_system.gd" id="9_6yo62"]
 [ext_resource type="PackedScene" uid="uid://bn5bk7amu0sj" path="res://src/scenes/peeps/guest.tscn" id="10_ve48q"]
 [ext_resource type="Script" uid="uid://bpqpu0qw14u5b" path="res://rating_system.gd" id="11_bjhph"]
+[ext_resource type="Script" uid="uid://bwi02rqq5c71m" path="res://src/scenes/guest_manager.gd" id="12_q54xf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjhph"]
 texture = ExtResource("3_ve48q")
@@ -59,12 +60,18 @@ metadata/_custom_type_script = "uid://bavk74fdocpku"
 script = ExtResource("9_6yo62")
 metadata/_custom_type_script = "uid://dj8nrcvt7tiuf"
 
-[node name="Guest" parent="." unique_id=369888613 instance=ExtResource("10_ve48q")]
-position = Vector2(715, 333)
-
 [node name="RatingSystem" type="Node" parent="." unique_id=1278435214]
 script = ExtResource("11_bjhph")
 metadata/_custom_type_script = "uid://bpqpu0qw14u5b"
+
+[node name="GuestManager" type="Node" parent="." unique_id=1717228776 node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("12_q54xf")
+guest_scene = ExtResource("10_ve48q")
+spawn_point = NodePath("../Marker2D")
+metadata/_custom_type_script = "uid://bwi02rqq5c71m"
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=36390549]
+position = Vector2(769, 311)
 
 [connection signal="updated" from="Timesystem" to="CanvasLayer/HUD" method="_on_timesystem_updated"]
 [connection signal="balance_updated" from="MoneySystem" to="CanvasLayer/HUD" method="_on_money_system_balance_updated"]

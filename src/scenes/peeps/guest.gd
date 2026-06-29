@@ -1,15 +1,20 @@
 extends CharacterBody2D
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+class_name Guest
 
-var shopping_list: Array[shop_items]
-var state = [
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@export var shopping_list: Array[shop_items]
+
+var state: Array[Variant] = [
 	"ENTERING",
 	"SHOPPING",
 	"QUEUEING",
 	"WAITING_CASHIER",
 	"LEAVING"
 	]
+	
 var cashier_wait_patience : int
 
 func _ready() -> void:
-	animated_sprite_2d.play("Idle_Down")
+	animated_sprite.play("Idle_Down")
+
+#res://src/resources/shop_items/

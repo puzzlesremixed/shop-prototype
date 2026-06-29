@@ -34,7 +34,4 @@ func _ready():
 		if items[i] != null:
 			var item = shop_item_scene.instantiate()
 			item.item_stats = items[i]
-			#item.position = slots[i].position
-			print("Item [" , i, "], Marker Pos : ", slots[i].position, ", Actual scene pos: ", item.position )
-			#item.z_index = 3
 			slots[i].add_child(item)
