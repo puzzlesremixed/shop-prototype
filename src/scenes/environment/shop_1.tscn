@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://plcjxwdaw1y4" path="res://src/resources/shop_items/toothbrush.tres" id="8_q0tbl"]
 [ext_resource type="Resource" uid="uid://d3t4y3x280f71" path="res://src/resources/shop_items/carrot.tres" id="9_yn3l1"]
 [ext_resource type="Resource" uid="uid://btm8g8x1e1ikr" path="res://src/resources/shop_items/milk_carton.tres" id="10_hegtu"]
-[ext_resource type="Texture2D" uid="uid://ct5kfioy5i1uw" path="res://assets/sprites/long_cashier_desk.png" id="11_xi7gi"]
+[ext_resource type="PackedScene" uid="uid://uxxy1n0qtw35" path="res://src/scenes/cashier_counter.tscn" id="11_xi7gi"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_erlct"]
 tile_data = PackedInt32Array(0, 720897, 24, 1, 786433, 24)
@@ -1217,12 +1217,6 @@ pattern_0 = SubResource("TileMapPattern_erlct")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20lvh"]
 size = Vector2(62, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvt0r"]
-size = Vector2(34, 94)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bupo"]
-size = Vector2(40.5, 67)
-
 [node name="Shop1" type="Node2D" unique_id=1216748684]
 y_sort_enabled = true
 
@@ -1343,24 +1337,8 @@ items = Array[ExtResource("5_nqh3s")]([ExtResource("6_xi7gi"), ExtResource("7_o0
 position = Vector2(777, 447)
 items = Array[ExtResource("5_nqh3s")]([ExtResource("7_o0di7"), ExtResource("9_yn3l1"), ExtResource("10_hegtu"), ExtResource("10_hegtu"), ExtResource("9_yn3l1"), ExtResource("8_q0tbl"), ExtResource("7_o0di7"), ExtResource("6_xi7gi")])
 
-[node name="CashierCounter" type="Area2D" parent="." unique_id=2104066321]
-
-[node name="Sprite2D" type="Sprite2D" parent="CashierCounter" unique_id=464980860]
-position = Vector2(300, 322)
-scale = Vector2(2, 2)
-texture = ExtResource("11_xi7gi")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CashierCounter" unique_id=2065917325]
-position = Vector2(301, 335)
-shape = SubResource("RectangleShape2D_yvt0r")
-one_way_collision_margin = 128.0
-
-[node name="InteractArea" type="Area2D" parent="CashierCounter" unique_id=896041907]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CashierCounter/InteractArea" unique_id=668700150]
-position = Vector2(257.25, 326)
-shape = SubResource("RectangleShape2D_4bupo")
-debug_color = Color(0.75409657, 0.45227277, 0.18486893, 0.41960785)
-
 [node name="GuestSpawnPoint" type="Marker2D" parent="." unique_id=1410012850]
 position = Vector2(768, 228)
+
+[node name="CashierCounter" parent="." unique_id=1085052761 instance=ExtResource("11_xi7gi")]
+position = Vector2(279, 322)

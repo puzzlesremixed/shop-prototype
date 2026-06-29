@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://4mxe0f6r0eoh" path="res://src/scenes/ui/hud.tscn" id="8_s6mad"]
 [ext_resource type="Script" uid="uid://dj8nrcvt7tiuf" path="res://src/scripts/money_system.gd" id="9_6yo62"]
 [ext_resource type="PackedScene" uid="uid://bn5bk7amu0sj" path="res://src/scenes/peeps/guest.tscn" id="10_ve48q"]
+[ext_resource type="Script" uid="uid://bpqpu0qw14u5b" path="res://rating_system.gd" id="11_bjhph"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjhph"]
 texture = ExtResource("3_ve48q")
@@ -61,7 +62,13 @@ metadata/_custom_type_script = "uid://dj8nrcvt7tiuf"
 [node name="Guest" parent="." unique_id=369888613 instance=ExtResource("10_ve48q")]
 position = Vector2(715, 333)
 
+[node name="RatingSystem" type="Node" parent="." unique_id=1278435214]
+script = ExtResource("11_bjhph")
+metadata/_custom_type_script = "uid://bpqpu0qw14u5b"
+
 [connection signal="updated" from="Timesystem" to="CanvasLayer/HUD" method="_on_timesystem_updated"]
 [connection signal="balance_updated" from="MoneySystem" to="CanvasLayer/HUD" method="_on_money_system_balance_updated"]
+[connection signal="rating_decreased" from="RatingSystem" to="CanvasLayer/HUD" method="_on_rating_system_rating_decreased"]
+[connection signal="rating_increased" from="RatingSystem" to="CanvasLayer/HUD" method="_on_rating_system_rating_increased"]
 
 [editable path="Shop1"]

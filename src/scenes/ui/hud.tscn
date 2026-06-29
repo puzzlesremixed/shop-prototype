@@ -76,7 +76,35 @@ offset_bottom = 105.0
 text = "$69,420"
 label_settings = ExtResource("3_q3cwv")
 
+[node name="RatingCont" type="HBoxContainer" parent="Background" unique_id=451432723]
+layout_mode = 0
+offset_left = 589.0
+offset_top = 73.0
+offset_right = 643.0
+offset_bottom = 113.0
+
+[node name="RatingLabel" type="Label" parent="Background/RatingCont" unique_id=1586595595]
+layout_mode = 2
+text = "Rating :"
+label_settings = ExtResource("3_q3cwv")
+
+[node name="RatingLabel2" type="Label" parent="Background/RatingCont" unique_id=274467993]
+layout_mode = 2
+text = "999"
+label_settings = ExtResource("3_q3cwv")
+
+[node name="RatingDirection" type="Label" parent="Background/RatingCont" unique_id=2131327590]
+layout_mode = 2
+text = ">"
+label_settings = ExtResource("3_q3cwv")
+
+[node name="Timer" type="Timer" parent="Background/RatingCont" unique_id=1432535483]
+wait_time = 5.0
+one_shot = true
+
 [node name="Time" type="Control" parent="." unique_id=614050906]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[connection signal="timeout" from="Background/RatingCont/Timer" to="." method="_on_timer_timeout"]
