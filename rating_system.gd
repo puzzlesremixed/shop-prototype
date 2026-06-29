@@ -13,9 +13,13 @@ func _process(delta: float) -> void:
 		reduce_rating(100)
 
 func add_rating(amount: int):
-	current_rating += amount
-	rating_increased.emit(current_rating)
+	if (current_rating < 999):
+		var new_rating = clamp(current_rating+amount, 0, 999)
+		current_rating = new_rating
+		rating_increased.emit(current_rating)
 	
 func reduce_rating(amount: int):
-	current_rating -= amount
-	rating_decreased.emit(current_rating)
+	if (current_rating > 0):
+		var new_rating = clamp(current_rating-amount, 0, 999)
+		current_rating = new_rating
+		rating_decreased.emit(current_rating)
