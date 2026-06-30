@@ -38,15 +38,6 @@ tile_set = SubResource("TileSet_yvt0r")
 [node name="Shop1" parent="." unique_id=1216748684 instance=ExtResource("1_km0hc")]
 position = Vector2(0, 1)
 
-[node name="Floor" parent="Shop1" index="0" unique_id=821253797]
-navigation_enabled = false
-
-[node name="Border" parent="Shop1" index="1" unique_id=779120538]
-navigation_enabled = false
-
-[node name="Objects" parent="Shop1" index="2" unique_id=1825759799]
-navigation_enabled = false
-
 [node name="Player2" parent="." unique_id=82853052 instance=ExtResource("2_dr0f3")]
 position = Vector2(519, 372)
 
@@ -73,11 +64,11 @@ metadata/_custom_type_script = "uid://dj8nrcvt7tiuf"
 script = ExtResource("11_bjhph")
 metadata/_custom_type_script = "uid://bpqpu0qw14u5b"
 
-[node name="GuestManager" type="Node" parent="." unique_id=1717228776 node_paths=PackedStringArray("spawn_point")]
+[node name="GuestManager" type="Node2D" parent="." unique_id=419384883 node_paths=PackedStringArray("spawn_point")]
+y_sort_enabled = true
 script = ExtResource("12_q54xf")
 guest_scene = ExtResource("10_ve48q")
 spawn_point = NodePath("../Marker2D")
-metadata/_custom_type_script = "uid://bwi02rqq5c71m"
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=36390549]
 position = Vector2(769, 311)

@@ -1,30 +1,20 @@
 extends CharacterBody2D
 class_name Guest
 
-# todo
-#var state: Array[Variant] = [
-	#"ENTERING",
-	#"SHOPPING",
-	#"QUEUEING",
-	#"WAITING_CASHIER",
-	#"LEAVING"
-	#]
-	
-#	should be a timer
-#var cashier_wait_patience : int
-
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var shopping_list: Array[shop_items]
+@export var debug_pathfind_line : Line2D
+@export var speed: float = 150.0 # Adjusted down from 200 for smoother grid movement
 
-@export var debug_pathfind_line : Line2D ;
+var TILE_SIZE: int = 32
+var tilemap_layer: TileMapLayer
+var destination: Shelf
 
-var TILE_SIZE: int = 32;
-var tilemap_layer: TileMapLayer;
-var destination: Shelf;
-
-var pathfinding_grid :  AStarGrid2D = AStarGrid2D.new()
-var path_to_destination : Array = [];
-
+var pathfinding_grid : AStarGrid2D = AStarGrid2D.new()
+var path_to_destination : Array = []
+var target_position : Vector2 = Vector2.ZERO
+var is_moving : bool = false
+var last_direction : String = "Down" # Default memory fallback for idle state
 
 
 func _ready() -> void:
@@ -47,12 +37,33 @@ func _ready() -> void:
 			
 	# STEP 2: Unblock ONLY your specifically painted path cells
 	for cell in tilemap_layer.get_used_cells():
-		pathfinding_grid.set_point_solid(cell, false) # false means walkable!
+		pathfinding_grid.set_point_solid(cell, false)
 			
-	print("Moving guest")
 	_move_guest()
 
-func _move_guest()->void:
+
+func _physics_process(delta: float) -> void:
+	if not is_moving:
+		return
+		
+	# Move toward the current target tile center point
+	var distance_to_target = global_position.distance_to(target_position)
+	
+	# Check if we have arrived close enough to the target tile center
+	if distance_to_target < 2.0:
+		global_position = target_position # Snap perfectly to tile center
+		_get_next_path_point()
+	else:
+		# Calculate direction vector and update velocity
+		var direction_vector = (target_position - global_position).normalized()
+		velocity = direction_vector * speed
+		
+		# Track and update sprite movement animation state
+		_update_animation("Walk", direction_vector)
+		move_and_slide()
+
+
+func _move_guest() -> void:
 	if not destination or not destination.navi_target:
 		print("ERROR: Destination or navi_target is null!")
 		return
@@ -60,34 +71,50 @@ func _move_guest()->void:
 	var start_pos: Vector2 = global_position
 	var end_pos: Vector2 = destination.navi_target.global_position
 	
-	print("--- Pathfinding Debug ---")
-	print("Start Global Position: ", start_pos)
-	print("End Global Position: ", end_pos)
-	
-	# Correct way to find map coordinates using your TileMapLayer
 	var start_cell: Vector2i = tilemap_layer.local_to_map(start_pos)
 	var end_cell: Vector2i = tilemap_layer.local_to_map(end_pos)
 	
-	print("Start Map Grid Cell: ", start_cell)
-	print("End Map Grid Cell: ", end_cell)
-	
 	# Generate the point path using absolute global positions
-	path_to_destination = pathfinding_grid.get_point_path(start_cell, end_cell)
-	print("Path points found: ", path_to_destination.size())
+	path_to_destination = Array(pathfinding_grid.get_point_path(start_cell, end_cell))
 	
 	# Visual Line2D debug drawing configuration
 	if debug_pathfind_line:
 		debug_pathfind_line.clear_points()
 		for point in path_to_destination:
-			# Offset point coordinates to draw the path line directly in the center of the tiles
 			var centered_point = point + Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
-			# Draw point relative to Line2D local space
 			debug_pathfind_line.add_point(debug_pathfind_line.to_local(centered_point))
 
+	# Initialize step-by-step movement processing
 	if path_to_destination.size() > 1:
-		print("Path calculation successful!")
 		path_to_destination.remove_at(0) # Strip current starting tile point
-		var go_to_pos: Vector2 = path_to_destination[0] + Vector2(TILE_SIZE/2.0, TILE_SIZE/2.0)
+		_get_next_path_point()
+	else:
+		_update_animation("Idle", Vector2.ZERO)
 
-		if go_to_pos.x != global_position.x:
-			global_position = go_to_pos
+
+func _get_next_path_point() -> void:
+	if path_to_destination.size() > 0:
+		# Extract the next path coordinate and apply center tile positioning offsets
+		var next_grid_pos: Vector2 = path_to_destination.pop_front()
+		target_position = next_grid_pos + Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
+		is_moving = true
+	else:
+		# Arrived at the final destination shelf
+		is_moving = false
+		velocity = Vector2.ZERO
+		_update_animation("Idle", Vector2.ZERO)
+
+
+func _update_animation(state: String, dir: Vector2) -> void:
+	# Keep track of previous direction if character goes idle
+	if state == "Walk" and dir != Vector2.ZERO:
+		if abs(dir.x) > abs(dir.y):
+			last_direction = "Right" if dir.x > 0 else "Left"
+		else:
+			last_direction = "Down" if dir.y > 0 else "Up"
+			
+	# Construct string matches: "Walk_Left", "Idle_Up", etc.
+	var anim_name = state + "_" + last_direction
+	
+	if animated_sprite.animation != anim_name:
+		animated_sprite.play(anim_name)
