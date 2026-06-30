@@ -38,6 +38,15 @@ tile_set = SubResource("TileSet_yvt0r")
 [node name="Shop1" parent="." unique_id=1216748684 instance=ExtResource("1_km0hc")]
 position = Vector2(0, 1)
 
+[node name="Floor" parent="Shop1" index="0" unique_id=821253797]
+navigation_enabled = false
+
+[node name="Border" parent="Shop1" index="1" unique_id=779120538]
+navigation_enabled = false
+
+[node name="Objects" parent="Shop1" index="2" unique_id=1825759799]
+navigation_enabled = false
+
 [node name="Player2" parent="." unique_id=82853052 instance=ExtResource("2_dr0f3")]
 position = Vector2(519, 372)
 

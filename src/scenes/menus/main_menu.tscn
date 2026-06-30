@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bar5sw1m30ff4"]
 
 [ext_resource type="Script" uid="uid://dp82je1rc7laa" path="res://src/scenes/menus/main_menu.gd" id="1_tn18x"]
-[ext_resource type="LabelSettings" path="res://src/fonts/momo_trust_display_heading.tres" id="2_ovsfe"]
+[ext_resource type="LabelSettings" uid="uid://deufaos8rtttc" path="res://src/fonts/momo_trust_display_heading.tres" id="2_ovsfe"]
 
 [node name="MainMenu" type="Node2D" unique_id=436448751]
 script = ExtResource("1_tn18x")

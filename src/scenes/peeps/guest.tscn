@@ -389,8 +389,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Guest" type="CharacterBody2D" unique_id=82853052]
+[node name="Guest" type="CharacterBody2D" unique_id=82853052 node_paths=PackedStringArray("debug_pathfind_line")]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_j8asl")
+debug_pathfind_line = NodePath("Line2D")
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=262356294]
 position = Vector2(0, 3)
@@ -410,5 +413,10 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pvdti")
 animation = &"Idle_Down"
 frame_progress = 0.93984914
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1460762444]
+z_index = 99
+width = 5.0
+default_color = Color(1, 0, 0, 1)
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]

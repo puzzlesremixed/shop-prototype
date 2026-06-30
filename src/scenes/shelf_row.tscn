@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b3ju864oljvrt"]
+
+[ext_resource type="Script" uid="uid://xr07q7e8yub8" path="res://src/scenes/shelf_row.gd" id="1_bxjew"]
+[ext_resource type="PackedScene" uid="uid://dfr8l7dwugk7e" path="res://src/scenes/shelf.tscn" id="1_gjfv0"]
+[ext_resource type="Script" uid="uid://gv8420mj7tab" path="res://src/resources/shelf_slot.gd" id="2_iwdkg"]
+[ext_resource type="Resource" uid="uid://bdqqd0ot22c55" path="res://src/resources/shelf_slot/carrot_9_9.tres" id="3_031ei"]
+[ext_resource type="Resource" uid="uid://dk7lca6kdufvc" path="res://src/resources/shelf_slot/snack_9_9.tres" id="4_b0ijt"]
+[ext_resource type="Resource" uid="uid://yw7e3fhqasr4" path="res://src/resources/shelf_slot/toothb_9_9.tres" id="5_iwdkg"]
+[ext_resource type="Resource" uid="uid://ii8qnbo2yuxt" path="res://src/resources/shelf_slot/milkc_9_9.tres" id="6_b0ijt"]
+[ext_resource type="Resource" uid="uid://cko68chbcrypq" path="res://src/resources/shelf_slot/shampoo_9_9.tres" id="7_bxjew"]
+
+[node name="ShelfRow" type="Node2D" unique_id=1115271398]
+script = ExtResource("1_bxjew")
+
+[node name="Shelf" parent="." unique_id=1156190420 instance=ExtResource("1_gjfv0")]
+position = Vector2(-234, 2)
+items = Array[ExtResource("2_iwdkg")]([ExtResource("3_031ei"), ExtResource("4_b0ijt"), ExtResource("5_iwdkg"), ExtResource("6_b0ijt"), ExtResource("7_bxjew"), ExtResource("4_b0ijt"), ExtResource("7_bxjew"), ExtResource("4_b0ijt"), ExtResource("3_031ei")])
+
+[node name="Shelf2" parent="." unique_id=1561502763 instance=ExtResource("1_gjfv0")]
+position = Vector2(-164, 2)
+items = Array[ExtResource("2_iwdkg")]([ExtResource("3_031ei"), ExtResource("7_bxjew"), ExtResource("4_b0ijt"), ExtResource("5_iwdkg"), ExtResource("4_b0ijt"), ExtResource("3_031ei"), ExtResource("6_b0ijt"), ExtResource("4_b0ijt"), ExtResource("7_bxjew")])
+
+[node name="Shelf3" parent="." unique_id=842811153 instance=ExtResource("1_gjfv0")]
+position = Vector2(-35, 2)
+items = Array[ExtResource("2_iwdkg")]([ExtResource("4_b0ijt"), ExtResource("7_bxjew"), ExtResource("4_b0ijt"), ExtResource("3_031ei"), ExtResource("7_bxjew"), ExtResource("4_b0ijt"), ExtResource("5_iwdkg"), ExtResource("6_b0ijt"), ExtResource("3_031ei")])
+
+[node name="Shelf4" parent="." unique_id=1204449931 instance=ExtResource("1_gjfv0")]
+position = Vector2(35, 2)
+items = Array[ExtResource("2_iwdkg")]([ExtResource("4_b0ijt"), ExtResource("3_031ei"), ExtResource("6_b0ijt"), ExtResource("5_iwdkg"), ExtResource("4_b0ijt"), ExtResource("7_bxjew"), ExtResource("4_b0ijt"), ExtResource("7_bxjew"), ExtResource("3_031ei")])
+
+[node name="Shelf5" parent="." unique_id=1609465661 instance=ExtResource("1_gjfv0")]
+position = Vector2(154, 2)
+items = Array[ExtResource("2_iwdkg")]([ExtResource("3_031ei"), ExtResource("4_b0ijt"), ExtResource("5_iwdkg"), ExtResource("7_bxjew"), ExtResource("4_b0ijt"), ExtResource("4_b0ijt"), ExtResource("7_bxjew"), ExtResource("6_b0ijt"), ExtResource("3_031ei")])
+
+[node name="Shelf6" parent="." unique_id=278804420 instance=ExtResource("1_gjfv0")]
+position = Vector2(224, 2)
+items = Array[ExtResource("2_iwdkg")]([ExtResource("7_bxjew"), ExtResource("5_iwdkg"), ExtResource("6_b0ijt"), ExtResource("4_b0ijt"), ExtResource("4_b0ijt"), ExtResource("3_031ei"), ExtResource("7_bxjew"), ExtResource("4_b0ijt"), ExtResource("3_031ei")])
