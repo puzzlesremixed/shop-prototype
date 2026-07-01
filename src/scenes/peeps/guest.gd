@@ -10,16 +10,17 @@ class_name Guest
 var TILE_SIZE: int = 32
 var tilemap_layer: TileMapLayer
 var destination: Shelf
-
+var shopping_routes: Array[Shelf];
 var pathfinding_grid : AStarGrid2D = AStarGrid2D.new()
 var path_to_destination : Array = []
 var target_position : Vector2 = Vector2.ZERO
 var is_moving : bool = false
 var last_direction : String = "Down" 
-
+var current_shelf  = 0;
 
 func _ready() -> void:
 	animated_sprite.play("Idle_Down")
+	destination = shopping_routes[current_shelf]
 	
 	if debug_pathfind_line:
 		debug_pathfind_line.global_position = Vector2.ZERO
@@ -43,24 +44,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not is_moving:
-		return
-		
-	# Move toward the current target tile center point
-	var distance_to_target = global_position.distance_to(target_position)
-	
-	# Check if we have arrived close enough to the target tile center
-	if distance_to_target < 2.0:
-		global_position = target_position # Snap perfectly to tile center
-		_get_next_path_point()
-	else:
-		# Calculate direction vector and update velocity
-		var direction_vector = (target_position - global_position).normalized()
-		velocity = direction_vector * speed
-		
-		# Track and update sprite movement animation state
-		_update_animation("Walk", direction_vector)
-		move_and_slide()
+	pathfind()
 
 
 func _move_guest() -> void:
@@ -103,7 +87,24 @@ func _get_next_path_point() -> void:
 		is_moving = false
 		velocity = Vector2.ZERO
 		_update_animation("Idle", Vector2.ZERO)
+		_arrived_at_destination()
 
+
+func _arrived_at_destination() -> void:
+#	check_shelf(destination)
+#	
+	current_shelf += 1
+#
+#	if shopping_complete():
+#		go_to_cashier()
+#		return
+
+	if current_shelf >= shopping_routes.size():
+#		finish_search()
+		return
+
+	destination = shopping_routes[current_shelf]
+	_move_guest()
 
 func _update_animation(state: String, dir: Vector2) -> void:
 	# Keep track of previous direction if character goes idle
@@ -113,7 +114,6 @@ func _update_animation(state: String, dir: Vector2) -> void:
 		else:
 			last_direction = "Down" if dir.y > 0 else "Up"
 			
-	# Construct string matches: "Walk_Left", "Idle_Up", etc.
 	var anim_name = state + "_" + last_direction
 	update_interaction_area()
 	if animated_sprite.animation != anim_name:
@@ -129,3 +129,23 @@ func update_interaction_area() -> void:
 			interaction_area.rotation_degrees = 180
 		"Left":
 			interaction_area.rotation_degrees = -90
+
+func pathfind() -> void:
+	if not is_moving:
+		return
+		
+	# Move toward the current target tile center point
+	var distance_to_target: float = global_position.distance_to(target_position)
+	
+	# Check if we have arrived close enough to the target tile center
+	if distance_to_target < 2.0:
+		global_position = target_position # Snap perfectly to tile center
+		_get_next_path_point()
+	else:
+		# Calculate direction vector and update velocity
+		var direction_vector: Vector2 = (target_position - global_position).normalized()
+		velocity = direction_vector * speed
+		
+		# Track and update sprite movement animation state
+		_update_animation("Walk", direction_vector)
+		move_and_slide()
