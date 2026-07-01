@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://bgywu5sf0dh50"]
 
-[ext_resource type="Script" uid="uid://dp82je1rc7laa" path="res://src/scenes/menus/main_menu.gd" id="1_tn18x"]
-[ext_resource type="LabelSettings" uid="uid://deufaos8rtttc" path="res://src/fonts/momo_trust_display_heading.tres" id="2_ovsfe"]
 [ext_resource type="Texture2D" uid="uid://b1xd2onrp4s7b" path="res://assets/sprites/menu/checkerboard.svg" id="1_tn18x"]
 [ext_resource type="Texture2D" uid="uid://cjbi0y4j5ocfk" path="res://assets/sprites/menu/logo.svg" id="2_ovsfe"]
-[ext_resource type="Texture2D" uid="uid://dekpwwx22vorh" path="res://assets/sprites/menu/buttons_texture.png" id="3_jvln8"]
-[ext_resource type="FontFile" uid="uid://wx3vfviyy5n2" path="res://src/fonts/import/MomoTrustSans-VariableFont_wght.ttf" id="4_ksoms"]
+[ext_resource type="FontFile" uid="uid://f48sc3ctcqqq" path="res://assets/fonts/kenney_kenney-fonts/Fonts/Kenney Pixel Square.ttf" id="4_jvln8"]
+[ext_resource type="StyleBox" uid="uid://cbhxogrvek5m5" path="res://src/resources/menu/default_button.res" id="4_ksoms"]
+[ext_resource type="StyleBox" uid="uid://25hsc7ce6ghb" path="res://src/resources/menu/default_pressed_button.res" id="5_ksoms"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jvln8"]
+font = ExtResource("4_jvln8")
+font_size = 24
+shadow_size = 0
+shadow_color = Color(0.11764706, 0.09803922, 0.078431375, 1)
+shadow_offset = Vector2(0, 2)
 
 [sub_resource type="Animation" id="Animation_ovsfe"]
 length = 0.001
@@ -154,63 +160,57 @@ theme_override_constants/margin_right = 500
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="PlayButton" type="NinePatchRect" parent="VBoxContainer/MarginContainer/ButtonMenu" unique_id=1040042864]
+[node name="StartButton" type="Button" parent="VBoxContainer/MarginContainer/ButtonMenu" unique_id=34566053]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-texture = ExtResource("3_jvln8")
-region_rect = Rect2(0, 0, 16, 16)
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 7
+theme_override_fonts/font = ExtResource("4_jvln8")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("4_ksoms")
+theme_override_styles/pressed = ExtResource("5_ksoms")
+theme_override_styles/hover = ExtResource("4_ksoms")
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ButtonMenu/PlayButton" unique_id=1641806593]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ButtonMenu/StartButton" unique_id=1641806593]
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 60.0
-theme_override_fonts/font = ExtResource("4_ksoms")
-theme_override_font_sizes/font_size = 20
 text = "Play"
+label_settings = SubResource("LabelSettings_jvln8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionsButton" type="NinePatchRect" parent="VBoxContainer/MarginContainer/ButtonMenu" unique_id=1444784298]
+[node name="OptionsButton" type="Button" parent="VBoxContainer/MarginContainer/ButtonMenu" unique_id=288890105]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-texture = ExtResource("3_jvln8")
-region_rect = Rect2(0, 0, 16, 16)
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 7
+theme_override_fonts/font = ExtResource("4_jvln8")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("4_ksoms")
+theme_override_styles/pressed = ExtResource("5_ksoms")
+theme_override_styles/hover = ExtResource("4_ksoms")
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ButtonMenu/OptionsButton" unique_id=1794759170]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ButtonMenu/OptionsButton" unique_id=453302227]
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 60.0
-theme_override_fonts/font = ExtResource("4_ksoms")
-theme_override_font_sizes/font_size = 20
-text = "Options"
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_jvln8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitButton" type="NinePatchRect" parent="VBoxContainer/MarginContainer/ButtonMenu" unique_id=74020259]
+[node name="QuitButton" type="Button" parent="VBoxContainer/MarginContainer/ButtonMenu" unique_id=500870121]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-texture = ExtResource("3_jvln8")
-region_rect = Rect2(0, 0, 16, 16)
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 7
+theme_override_fonts/font = ExtResource("4_jvln8")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("4_ksoms")
+theme_override_styles/pressed = ExtResource("5_ksoms")
+theme_override_styles/hover = ExtResource("4_ksoms")
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ButtonMenu/QuitButton" unique_id=964219803]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ButtonMenu/QuitButton" unique_id=919912447]
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 60.0
-theme_override_fonts/font = ExtResource("4_ksoms")
-theme_override_font_sizes/font_size = 20
-text = "Quit"
+text = "QUIT"
+label_settings = SubResource("LabelSettings_jvln8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
