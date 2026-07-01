@@ -4,7 +4,8 @@ class_name Guest
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var shopping_list: Array[shop_items]
 @export var debug_pathfind_line : Line2D
-@export var speed: float = 150.0 # Adjusted down from 200 for smoother grid movement
+@export var speed: float = 150.0 
+@onready var interaction_area: Area2D = $InteractionArea
 
 var TILE_SIZE: int = 32
 var tilemap_layer: TileMapLayer
@@ -14,7 +15,7 @@ var pathfinding_grid : AStarGrid2D = AStarGrid2D.new()
 var path_to_destination : Array = []
 var target_position : Vector2 = Vector2.ZERO
 var is_moving : bool = false
-var last_direction : String = "Down" # Default memory fallback for idle state
+var last_direction : String = "Down" 
 
 
 func _ready() -> void:
@@ -23,7 +24,6 @@ func _ready() -> void:
 	if debug_pathfind_line:
 		debug_pathfind_line.global_position = Vector2.ZERO
 	
-	# Configure your basic grid sizing layout
 	pathfinding_grid.region = tilemap_layer.get_used_rect()
 	pathfinding_grid.cell_size = Vector2(TILE_SIZE, TILE_SIZE)
 	pathfinding_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
@@ -115,6 +115,17 @@ func _update_animation(state: String, dir: Vector2) -> void:
 			
 	# Construct string matches: "Walk_Left", "Idle_Up", etc.
 	var anim_name = state + "_" + last_direction
-	
+	update_interaction_area()
 	if animated_sprite.animation != anim_name:
 		animated_sprite.play(anim_name)
+		
+func update_interaction_area() -> void:
+	match last_direction:
+		"Up":
+			interaction_area.rotation_degrees = 0
+		"Right":
+			interaction_area.rotation_degrees = 90
+		"Down":
+			interaction_area.rotation_degrees = 180
+		"Left":
+			interaction_area.rotation_degrees = -90

@@ -390,6 +390,7 @@ animations = [{
 
 [node name="Guest" type="CharacterBody2D" unique_id=82853052 node_paths=PackedStringArray("debug_pathfind_line")]
 y_sort_enabled = true
+collision_layer = 128
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_j8asl")

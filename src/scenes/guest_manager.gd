@@ -34,8 +34,11 @@ func try_spawn_guest() -> void:
 	spawn_guest()
 	
 func spawn_guest():
+	# pick random shelf to start exploring
 	shelf_rows.shuffle()
+
 	var guest: Guest = guest_scene.instantiate()
+	# pick the first shelf of the row
 	guest.destination = shelf_rows[0].shelfs_members[0]
 	guest.tilemap_layer = path
 	guest.global_position = spawn_point.global_position

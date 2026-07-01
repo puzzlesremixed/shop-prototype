@@ -71,7 +71,7 @@ guest_scene = ExtResource("10_ve48q")
 spawn_point = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=36390549]
-position = Vector2(769, 311)
+position = Vector2(767, 301)
 
 [connection signal="updated" from="Timesystem" to="CanvasLayer/HUD" method="_on_timesystem_updated"]
 [connection signal="balance_updated" from="MoneySystem" to="CanvasLayer/HUD" method="_on_money_system_balance_updated"]
