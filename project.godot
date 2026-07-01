@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="shop-prototype"
-run/main_scene="uid://tqntagtqf3yr"
+run/main_scene="uid://bgywu5sf0dh50"
 config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/show_image=false
 config/icon="uid://dli4pbofm6c2h"

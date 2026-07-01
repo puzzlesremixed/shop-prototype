@@ -248,5 +248,6 @@ autoplay = &"checkerboard_loop"
 libraries/ = SubResource("AnimationLibrary_jvln8")
 autoplay = &"warung_rush_logo"
 
+[connection signal="pressed" from="VBoxContainer/MarginContainer/ButtonMenu/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/ButtonMenu/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/ButtonMenu/QuitButton" to="." method="_on_quit_button_pressed"]
