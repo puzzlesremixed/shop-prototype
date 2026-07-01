@@ -186,10 +186,8 @@ func pathfind() -> void:
 func check_shelf(shelf: Shelf):
 	browsing_timer.start()
 	var found = shelf.take_requested_items(shopping_list)
-	print(found)
-	
-	for item in found:
-		print("erasing,,") 
+		
+	for item in found: 
 		shopping_list.erase(item)
 		var names_string = ", ".join(shopping_list.map(func(p): return p.name))
 		label.text = names_string

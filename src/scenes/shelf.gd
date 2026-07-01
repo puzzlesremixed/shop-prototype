@@ -58,12 +58,15 @@ func _ready():
 
 func take_requested_items(shopping_list : Array[shop_items]) -> Array[shop_items]:
 	var found_items : Array[shop_items]
-
+	var shopping_list_ducplidate: Array[shop_items] = shopping_list
+	
 	for item in items:
 		if item.item != null and item.stock > 0 and shopping_list.has(item.item):
-			print("Found matching item in slot: ", item.item.name)
-			item.stock -= 1
-			found_items.append(item.item)
+			if !found_items.has (item.item):
+				print("Found matching item in slot: ", item.item.name)
+				
+				item.stock -= 1
+				found_items.append(item.item)
 			
 	return found_items
 
