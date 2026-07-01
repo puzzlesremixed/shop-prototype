@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bgywu5sf0dh50"]
 
+[ext_resource type="Script" uid="uid://dp82je1rc7laa" path="res://src/scenes/menus/main_menu.gd" id="1_tn18x"]
+[ext_resource type="LabelSettings" uid="uid://deufaos8rtttc" path="res://src/fonts/momo_trust_display_heading.tres" id="2_ovsfe"]
 [ext_resource type="Texture2D" uid="uid://b1xd2onrp4s7b" path="res://assets/sprites/menu/checkerboard.svg" id="1_tn18x"]
 [ext_resource type="Texture2D" uid="uid://cjbi0y4j5ocfk" path="res://assets/sprites/menu/logo.svg" id="2_ovsfe"]
 [ext_resource type="Texture2D" uid="uid://dekpwwx22vorh" path="res://assets/sprites/menu/buttons_texture.png" id="3_jvln8"]

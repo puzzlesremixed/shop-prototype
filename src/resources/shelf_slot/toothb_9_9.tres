@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShelfSlot" format=3 uid="uid://yw7e3fhqasr4"]
+
+[ext_resource type="Resource" uid="uid://duyiqcqvtcfc4" path="res://src/resources/shop_items/shampoo.tres" id="1_hwf1y"]
+[ext_resource type="Script" uid="uid://gv8420mj7tab" path="res://src/resources/shelf_slot.gd" id="2_vyhxo"]
+
+[resource]
+script = ExtResource("2_vyhxo")
+item = ExtResource("1_hwf1y")
+metadata/_custom_type_script = "uid://gv8420mj7tab"
