@@ -419,10 +419,10 @@ offset = Vector2(0, -17)
 one_shot = true
 
 [node name="Label" type="Label" parent="." unique_id=466561277]
-offset_left = -1.0
-offset_top = -124.0
-offset_right = 83.0
-offset_bottom = -101.0
+offset_left = -107.0
+offset_top = -84.0
+offset_right = -23.0
+offset_bottom = -61.0
 text = "shit label!!!"
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
