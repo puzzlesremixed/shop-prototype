@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvt0r"]
 size = Vector2(64, 14)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20lvh"]
+size = Vector2(56, 14.5)
+
 [node name="Shelf" type="StaticBody2D" unique_id=1156190420]
 y_sort_enabled = true
 script = ExtResource("1_jdrml")
@@ -69,3 +72,13 @@ position = Vector2(0, -23)
 [node name="3_3" type="Marker2D" parent="MarkerGroup/Row 3" unique_id=1866827590]
 y_sort_enabled = true
 position = Vector2(17, -23)
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=102089813]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=2099004449]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_20lvh")
+debug_color = Color(0.75775677, 0.44541478, 0.253124, 0.41960785)
+
+[node name="NaviTarget" type="Marker2D" parent="." unique_id=110130084]
+position = Vector2(0, 16)

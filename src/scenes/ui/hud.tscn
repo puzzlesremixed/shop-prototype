@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://4mxe0f6r0eoh"]
+
+[ext_resource type="Script" uid="uid://dyn8ofqugseci" path="res://src/scripts/hud.gd" id="1_m12ob"]
+[ext_resource type="Texture2D" uid="uid://s8ypdry2py8p" path="res://assets/sprites/ui.png" id="2_q3cwv"]
+[ext_resource type="Texture2D" uid="uid://vy3pfer7sntn" path="res://icon.svg" id="3_dqg30"]
+[ext_resource type="LabelSettings" uid="uid://bqm4ak3a3p1kg" path="res://src/fonts/kenney_pixel_ui.tres" id="3_q3cwv"]
+
+[node name="HUD" type="Control" unique_id=292680249]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m12ob")
+
+[node name="Background" type="NinePatchRect" parent="." unique_id=1642143831]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 18.0
+offset_top = -56.0
+offset_right = -18.0
+offset_bottom = 69.0
+grow_horizontal = 2
+texture = ExtResource("2_q3cwv")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 6
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=1193541428]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 71.999985
+offset_right = 152.0
+offset_bottom = 199.99998
+scale = Vector2(0.29, 0.29)
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("3_dqg30")
+
+[node name="TimeLabelCont" type="HBoxContainer" parent="Background" unique_id=1964201623]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 76.0
+offset_top = 14.5
+offset_right = 283.0
+offset_bottom = 42.5
+grow_vertical = 2
+
+[node name="DayLabel" type="Label" parent="Background/TimeLabelCont" unique_id=1708542208]
+layout_mode = 2
+text = "33 "
+label_settings = ExtResource("3_q3cwv")
+
+[node name="MonthLabel" type="Label" parent="Background/TimeLabelCont" unique_id=670785657]
+layout_mode = 2
+text = "December"
+label_settings = ExtResource("3_q3cwv")
+
+[node name="YearLabel" type="Label" parent="Background/TimeLabelCont" unique_id=1167473278]
+layout_mode = 2
+text = "2029"
+label_settings = ExtResource("3_q3cwv")
+
+[node name="MoneyLabel" type="Label" parent="Background" unique_id=1263769834]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 77.0
+offset_right = 462.0
+offset_bottom = 105.0
+text = "$69,420"
+label_settings = ExtResource("3_q3cwv")
+
+[node name="RatingCont" type="HBoxContainer" parent="Background" unique_id=451432723]
+layout_mode = 0
+offset_left = 589.0
+offset_top = 73.0
+offset_right = 643.0
+offset_bottom = 113.0
+
+[node name="RatingLabel" type="Label" parent="Background/RatingCont" unique_id=1586595595]
+layout_mode = 2
+text = "Rating :"
+label_settings = ExtResource("3_q3cwv")
+
+[node name="RatingLabel2" type="Label" parent="Background/RatingCont" unique_id=274467993]
+layout_mode = 2
+text = "999"
+label_settings = ExtResource("3_q3cwv")
+
+[node name="RatingDirection" type="Label" parent="Background/RatingCont" unique_id=2131327590]
+layout_mode = 2
+text = ">"
+label_settings = ExtResource("3_q3cwv")
+
+[node name="Timer" type="Timer" parent="Background/RatingCont" unique_id=1432535483]
+wait_time = 5.0
+one_shot = true
+
+[node name="Time" type="Control" parent="." unique_id=614050906]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="timeout" from="Background/RatingCont/Timer" to="." method="_on_timer_timeout"]

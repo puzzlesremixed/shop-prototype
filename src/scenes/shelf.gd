@@ -1,7 +1,10 @@
 extends StaticBody2D
+class_name Shelf
 
-@export var items : Array[shop_items]
+@export var items: Array[ShelfSlot]
 var shop_item_scene: PackedScene = preload("uid://dokivvfnee0bw")
+
+@onready var navi_target: Marker2D = $NaviTarget
 
 @onready var _1_1: Marker2D = $"MarkerGroup/Row 1/1_1"
 @onready var _1_2: Marker2D = $"MarkerGroup/Row 1/1_2"
@@ -27,14 +30,31 @@ var shop_item_scene: PackedScene = preload("uid://dokivvfnee0bw")
 	_3_3,
 ]
 
-func _ready():
-	var count := mini(items.size(), slots.size())
+func contains(item: ShopItem) -> bool:
+	for slot in slots:
+		if slot.item == item and slot.stock > 0:
+			return true
+	return false
 	
+func take_item(item: ShopItem) -> bool:
+	for slot in slots:
+		if slot.item == item and slot.stock > 0:
+			slot.stock -= 1
+			#update_visuals()
+			return true
+	return false
+
+func refill(item: ShopItem, amount: int):
+	for slot in slots:
+		if slot.item == item:
+			slot.stock = min(slot.capacity, slot.stock + amount)
+			#update_visuals()
+			return
+
+func _ready():
+	var count := mini(items.size(), slots.size())	
 	for i in range(count):
 		if items[i] != null:
 			var item = shop_item_scene.instantiate()
-			item.item_stats = items[i]
-			#item.position = slots[i].position
-			print("Item [" , i, "], Marker Pos : ", slots[i].position, ", Actual scene pos: ", item.position )
-			#item.z_index = 3
+			item.item_stats = items[i].item
 			slots[i].add_child(item)

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShelfSlot" format=3 uid="uid://ii8qnbo2yuxt"]
+
+[ext_resource type="Resource" uid="uid://btm8g8x1e1ikr" path="res://src/resources/shop_items/milk_carton.tres" id="1_pj4an"]
+[ext_resource type="Script" uid="uid://gv8420mj7tab" path="res://src/resources/shelf_slot.gd" id="2_qapuk"]
+
+[resource]
+script = ExtResource("2_qapuk")
+item = ExtResource("1_pj4an")
+metadata/_custom_type_script = "uid://gv8420mj7tab"

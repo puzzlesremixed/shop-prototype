@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://uxxy1n0qtw35"]
+
+[ext_resource type="Texture2D" uid="uid://ct5kfioy5i1uw" path="res://assets/sprites/long_cashier_desk.png" id="1_tjqbb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvt0r"]
+size = Vector2(34, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bupo"]
+size = Vector2(40.5, 67)
+
+[node name="CashierCounter" type="StaticBody2D" unique_id=1085052761]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2064674521]
+position = Vector2(20, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("1_tjqbb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1718900222]
+position = Vector2(21, 13)
+shape = SubResource("RectangleShape2D_yvt0r")
+one_way_collision_margin = 128.0
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=1934181703]
+position = Vector2(-25, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=2090697608]
+shape = SubResource("RectangleShape2D_4bupo")
+debug_color = Color(0.75409657, 0.45227277, 0.18486893, 0.41960785)

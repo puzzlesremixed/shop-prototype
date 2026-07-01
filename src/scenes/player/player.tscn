@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b50xv1n3vqkma" path="res://src/scenes/player/player.gd" id="1_qopur"]
 [ext_resource type="Texture2D" uid="uid://4e0nqacxjjpk" path="res://assets/tileset/Modern_Interiors_Free_v2.2/Characters_free/Adam_idle_anim_16x16.png" id="2_n52bt"]
 [ext_resource type="Texture2D" uid="uid://3ef138b2ffv" path="res://assets/tileset/Modern_Interiors_Free_v2.2/Characters_free/Adam_run_16x16.png" id="3_cx3ie"]
-[ext_resource type="Texture2D" uid="uid://wrdrj6wednn8" path="res://plugins/rider-plugin-addons/addons/rider-plugin/icons/icon.svg" id="4_cx3ie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20lvh"]
 size = Vector2(46, 49)
@@ -409,11 +408,7 @@ shape = SubResource("RectangleShape2D_v4rts")
 position = Vector2(0, -17)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pvdti")
-animation = &"Walk_Up"
-frame_progress = 0.5824432
-
-[node name="Y sort debug" type="Sprite2D" parent="." unique_id=1931643049]
-scale = Vector2(1, -0.001953125)
-texture = ExtResource("4_cx3ie")
+animation = &"Idle_Down"
+frame_progress = 0.15695402
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
