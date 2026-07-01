@@ -6,19 +6,57 @@ class_name Guest
 @export var debug_pathfind_line : Line2D
 @export var speed: float = 150.0 
 @onready var interaction_area: Area2D = $InteractionArea
+@onready var browsing_timer: Timer = $BrowsingTimer
+@onready var label: Label = $Label
 
 var TILE_SIZE: int = 32
 var tilemap_layer: TileMapLayer
-var destination: Shelf
-var shopping_routes: Array[Shelf];
 var pathfinding_grid : AStarGrid2D = AStarGrid2D.new()
 var path_to_destination : Array = []
 var target_position : Vector2 = Vector2.ZERO
+
+var destination: Shelf
+var shopping_routes: Array[Shelf];
+var current_shelf: int  = 0;
+var collected_items: Array[shop_items];
+
 var is_moving : bool = false
 var last_direction : String = "Down" 
-var current_shelf  = 0;
+
+enum State {
+	SHOPPING,
+	QUEUEING,
+	CHECKOUT,
+	LEAVING
+}
+
+var state: State = State.SHOPPING
+
+func enter_state(new_state: State):
+	state = new_state
+	
+	match state:
+		State.SHOPPING:
+			destination = shopping_routes[current_shelf]
+			_move_guest()
+		
+		State.QUEUEING:
+			velocity = Vector2.ZERO
+		# Tell QueueManager we've arrived
+		
+		State.CHECKOUT:
+			pass
+			# Wait for player/minigame
+		
+		State.LEAVING:
+			# todo : get guest to exit door and kill themselves	
+			pass
+			_move_guest()
 
 func _ready() -> void:
+	var names_string = ", ".join(shopping_list.map(func(p): return p.name))
+	label.text = names_string
+
 	animated_sprite.play("Idle_Down")
 	destination = shopping_routes[current_shelf]
 	
@@ -90,31 +128,26 @@ func _get_next_path_point() -> void:
 		_arrived_at_destination()
 
 
-func _arrived_at_destination() -> void:
-#	check_shelf(destination)
-#	
-	current_shelf += 1
-#
-#	if shopping_complete():
-#		go_to_cashier()
-#		return
+func _arrived_at_destination():
+	match state:
+		State.SHOPPING:
+			arrived_at_shelf()
+		State.LEAVING:
+			queue_free()
+		State.QUEUEING:
+			pass
+		State.CHECKOUT:
+			pass
 
-	if current_shelf >= shopping_routes.size():
-#		finish_search()
-		return
-
-	destination = shopping_routes[current_shelf]
-	_move_guest()
-
-func _update_animation(state: String, dir: Vector2) -> void:
+func _update_animation(moving_state: String, dir: Vector2) -> void:
 	# Keep track of previous direction if character goes idle
-	if state == "Walk" and dir != Vector2.ZERO:
+	if moving_state == "Walk" and dir != Vector2.ZERO:
 		if abs(dir.x) > abs(dir.y):
 			last_direction = "Right" if dir.x > 0 else "Left"
 		else:
 			last_direction = "Down" if dir.y > 0 else "Up"
 			
-	var anim_name = state + "_" + last_direction
+	var anim_name = moving_state + "_" + last_direction
 	update_interaction_area()
 	if animated_sprite.animation != anim_name:
 		animated_sprite.play(anim_name)
@@ -149,3 +182,50 @@ func pathfind() -> void:
 		# Track and update sprite movement animation state
 		_update_animation("Walk", direction_vector)
 		move_and_slide()
+		
+func check_shelf(shelf: Shelf):
+	browsing_timer.start()
+	var found = shelf.take_requested_items(shopping_list)
+	print(found)
+	
+	for item in found:
+		print("erasing,,") 
+		shopping_list.erase(item)
+		var names_string = ", ".join(shopping_list.map(func(p): return p.name))
+		label.text = names_string
+		collected_items.append(item)
+	
+func arrived_at_shelf() -> void:
+
+	check_shelf(destination)
+	
+	if shopping_list.is_empty():
+		enter_queue()
+		return
+	
+	current_shelf += 1
+	
+	if current_shelf >= shopping_routes.size():
+		if collected_items.is_empty():
+			pass
+#			leave_angry()
+		else:
+			enter_queue()
+		return
+	
+	destination = shopping_routes[current_shelf]
+	
+	
+func enter_queue():
+	state = State.QUEUEING
+	
+#	queue_manager.add_guest(self)
+
+func checkout_finished():
+	state = State.LEAVING
+#	destination = exit_point
+	_move_guest()
+
+
+func _on_browsing_timer_timeout() -> void:
+	_move_guest()

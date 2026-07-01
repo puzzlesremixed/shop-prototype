@@ -394,7 +394,7 @@ collision_layer = 128
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_j8asl")
-debug_pathfind_line = NodePath("Line2D")
+debug_pathfind_line = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1178857422]
 shape = SubResource("CircleShape2D_yvt0r")
@@ -415,10 +415,15 @@ animation = &"Idle_Down"
 frame_progress = 0.93984914
 offset = Vector2(0, -17)
 
-[node name="Line2D" type="Line2D" parent="." unique_id=1460762444]
-visible = false
-z_index = 99
-width = 5.0
-default_color = Color(1, 0, 0, 1)
+[node name="BrowsingTimer" type="Timer" parent="." unique_id=1219420370]
+one_shot = true
+
+[node name="Label" type="Label" parent="." unique_id=466561277]
+offset_left = -1.0
+offset_top = -124.0
+offset_right = 83.0
+offset_bottom = -101.0
+text = "shit label!!!"
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="timeout" from="BrowsingTimer" to="." method="_on_browsing_timer_timeout"]
