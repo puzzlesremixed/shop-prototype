@@ -34,9 +34,12 @@ func try_spawn_guest() -> void:
 	spawn_guest()
 	
 func spawn_guest():
+	# pick random shelf to start exploring
 	shelf_rows.shuffle()
+
 	var guest: Guest = guest_scene.instantiate()
-	guest.destination = shelf_rows[0].shelfs_members[0]
+	# give guest shopping route 
+	guest.shopping_routes = build_route()
 	guest.tilemap_layer = path
 	guest.global_position = spawn_point.global_position
 	guest.shopping_list = generate_shopping_list()
@@ -53,3 +56,14 @@ func generate_shopping_list() -> Array[shop_items]:
 		result.append(available[i])
 
 	return result
+
+func build_route() -> Array[Shelf]:
+	var rows = shelf_rows.duplicate()
+	rows.shuffle()
+	
+	var route: Array[Shelf] = []
+	
+	for row in rows:
+		route.append_array(row.shelfs_members)
+	
+	return route
