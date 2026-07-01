@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bhkkrn16c1pnr"]
+
+[ext_resource type="Texture2D" uid="uid://cj5kc1angtr14" path="res://assets/sprites/minigame/scan/box.svg" id="1_e6s43"]
+[ext_resource type="Texture2D" uid="uid://bw0nfc3gys4wq" path="res://assets/sprites/minigame/scan/scanner.svg" id="2_kvnj3"]
+[ext_resource type="Script" uid="uid://dlxewbvlw3qw6" path="res://src/scripts/minigame/scan/scan_bag_dropzone.gd" id="3_0c24k"]
+[ext_resource type="Texture2D" uid="uid://dqyw88evr1lyn" path="res://assets/sprites/minigame/scan/bag.svg" id="3_kvnj3"]
+[ext_resource type="PackedScene" uid="uid://ruxqm2fqsx25" path="res://src/scenes/minigame/scan/scan_item.tscn" id="3_prdep"]
+[ext_resource type="Texture2D" uid="uid://djmpnuinxjwwo" path="res://assets/sprites/minigame/scan/scanline.svg" id="3_ypedj"]
+[ext_resource type="AudioStream" uid="uid://dsoqo4irdjo6i" path="res://assets/audio/kenney_interface-sounds/Audio/confirmation_001.ogg" id="5_ojdsi"]
+[ext_resource type="Script" uid="uid://dxb240fsf2snl" path="res://src/scripts/minigame/scan/scan_manager.gd" id="6_0c24k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neqb5"]
+size = Vector2(409.5, 92.14499)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tigac"]
+size = Vector2(339, 310.14172)
+
+[node name="ScanMinigame" type="Node2D" unique_id=903739902]
+
+[node name="Box" type="Sprite2D" parent="." unique_id=1967211381]
+z_index = 1
+position = Vector2(136, 657)
+scale = Vector2(0.462, 0.462)
+texture = ExtResource("1_e6s43")
+
+[node name="Scanner" type="Area2D" parent="." unique_id=1264197854]
+position = Vector2(640, 654)
+
+[node name="Sprite2D" type="Sprite2D" parent="Scanner" unique_id=858624749]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_kvnj3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scanner" unique_id=1901414745]
+position = Vector2(-4, -249.28998)
+shape = SubResource("RectangleShape2D_neqb5")
+
+[node name="BagDropzone" type="Area2D" parent="." unique_id=393804964 groups=["bag_dropzone"]]
+position = Vector2(1130, 656)
+script = ExtResource("3_0c24k")
+
+[node name="Sprite2D" type="Sprite2D" parent="BagDropzone" unique_id=2144394180]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_kvnj3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BagDropzone" unique_id=1289578433]
+position = Vector2(13.543213, 21.966614)
+rotation = -0.31504726
+scale = Vector2(0.95999515, 1)
+shape = SubResource("RectangleShape2D_tigac")
+
+[node name="SFX_Complete" type="AudioStreamPlayer" parent="BagDropzone" unique_id=972644374]
+stream = ExtResource("5_ojdsi")
+
+[node name="ScanLine" type="Node2D" parent="BagDropzone" unique_id=398664295]
+position = Vector2(-490, -291.41)
+scale = Vector2(0.75, 0.75)
+
+[node name="Sprite2D" type="Sprite2D" parent="BagDropzone/ScanLine" unique_id=615408412]
+texture = ExtResource("3_ypedj")
+
+[node name="Items" type="Node2D" parent="." unique_id=1823191318]
+
+[node name="ScanShopItem_1" parent="Items" unique_id=978726460 instance=ExtResource("3_prdep")]
+z_index = -1
+position = Vector2(81, 541)
+item_type = 1
+
+[node name="ScanShopItem_2" parent="Items" unique_id=664089517 instance=ExtResource("3_prdep")]
+z_index = -1
+position = Vector2(148, 544)
+item_type = 4
+
+[node name="ScanShopItem_3" parent="Items" unique_id=1975520886 instance=ExtResource("3_prdep")]
+z_index = -1
+position = Vector2(219, 574)
+item_type = 3
+
+[node name="ScanShopItem_4" parent="Items" unique_id=1306382268 instance=ExtResource("3_prdep")]
+z_index = -1
+position = Vector2(161, 501)
+
+[node name="ScanManager" type="Node2D" parent="." unique_id=1845796358]
+script = ExtResource("6_0c24k")
+
+[connection signal="area_entered" from="Scanner" to="BagDropzone" method="_on_scanner_area_entered"]
+[connection signal="area_exited" from="Scanner" to="BagDropzone" method="_on_scanner_area_exited"]

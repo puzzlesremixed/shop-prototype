@@ -10,19 +10,6 @@ var last_facing := "Up"
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 
-	# horizontal priority
-	# if input_dir.x != 0:
-		# input_dir.y = 0
-	# elif input_dir.y != 0:
-		# input_dir.x = 0
-		
-	# Restrict movement to 4 directions
-	# if abs(input_dir.x) > abs(input_dir.y):
-	# 	input_dir.y = 0
-	# else:
-	# 	input_dir.x = 0
-		
-		
 	velocity = input_dir * SPEED
 
 	if input_dir != Vector2.ZERO:
@@ -59,6 +46,3 @@ func update_interaction_area() -> void:
 			interaction_area.rotation_degrees = 180
 		"Left":
 			interaction_area.rotation_degrees = -90
-
-func _on_interaction_area_body_entered(body: Node2D) -> void:
-	print(body)

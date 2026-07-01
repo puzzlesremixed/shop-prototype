@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShelfSlot" format=3 uid="uid://dk7lca6kdufvc"]
+
+[ext_resource type="Resource" uid="uid://c661vklulormo" path="res://src/resources/shop_items/snack.tres" id="1_a6vhm"]
+[ext_resource type="Script" uid="uid://gv8420mj7tab" path="res://src/resources/shelf_slot.gd" id="2_8eoqm"]
+
+[resource]
+script = ExtResource("2_8eoqm")
+item = ExtResource("1_a6vhm")
+metadata/_custom_type_script = "uid://gv8420mj7tab"

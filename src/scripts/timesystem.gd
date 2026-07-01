@@ -21,7 +21,6 @@ func _process(delta: float) -> void:
 	handle_input()
 	
 	date_time.add_seconds(delta * ticks_per_sec_options[tick_index])
-	print(date_time.get_date_string())
 	if prev_date != date_time.day :
 		prev_date = date_time.day 
 		updated.emit(date_time)
@@ -30,8 +29,8 @@ func handle_input() ->void:
 	if Input.is_action_just_pressed("time_speed_up"):
 		tick_index += 1
 		tick_index = clamp(tick_index, 0, ticks_per_sec_options.size() - 1)
-		print("Current tick index= ", tick_index, ", Tick/s= " , ticks_per_sec_options[tick_index])
+		print("Game speed updated! Current tick index= ", tick_index, ", Tick/s= " , ticks_per_sec_options[tick_index])
 	if Input.is_action_just_pressed("time_slow_down"):
 		tick_index -= 1
 		tick_index = clamp(tick_index, 0, ticks_per_sec_options.size() - 1)
-		print("Current tick index= ", tick_index, ", Tick/s= " , ticks_per_sec_options[tick_index])
+		print("Game speed updated! Current tick index= ", tick_index, ", Tick/s= " , ticks_per_sec_options[tick_index])

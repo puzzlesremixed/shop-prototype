@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://bx8x1aittve26" path="res://src/resources/date_time.gd" id="7_wp4wj"]
 [ext_resource type="PackedScene" uid="uid://4mxe0f6r0eoh" path="res://src/scenes/ui/hud.tscn" id="8_s6mad"]
 [ext_resource type="Script" uid="uid://dj8nrcvt7tiuf" path="res://src/scripts/money_system.gd" id="9_6yo62"]
+[ext_resource type="PackedScene" uid="uid://bn5bk7amu0sj" path="res://src/scenes/peeps/guest.tscn" id="10_ve48q"]
+[ext_resource type="Script" uid="uid://bpqpu0qw14u5b" path="res://rating_system.gd" id="11_bjhph"]
+[ext_resource type="Script" uid="uid://bwi02rqq5c71m" path="res://src/scenes/guest_manager.gd" id="12_q54xf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjhph"]
 texture = ExtResource("3_ve48q")
@@ -36,7 +39,7 @@ tile_set = SubResource("TileSet_yvt0r")
 position = Vector2(0, 1)
 
 [node name="Player2" parent="." unique_id=82853052 instance=ExtResource("2_dr0f3")]
-position = Vector2(530, 402)
+position = Vector2(519, 372)
 
 [node name="Camera2D" type="Camera2D" parent="Player2" unique_id=997158421]
 position = Vector2(4, -14)
@@ -57,7 +60,22 @@ metadata/_custom_type_script = "uid://bavk74fdocpku"
 script = ExtResource("9_6yo62")
 metadata/_custom_type_script = "uid://dj8nrcvt7tiuf"
 
+[node name="RatingSystem" type="Node" parent="." unique_id=1278435214]
+script = ExtResource("11_bjhph")
+metadata/_custom_type_script = "uid://bpqpu0qw14u5b"
+
+[node name="GuestManager" type="Node2D" parent="." unique_id=419384883 node_paths=PackedStringArray("spawn_point")]
+y_sort_enabled = true
+script = ExtResource("12_q54xf")
+guest_scene = ExtResource("10_ve48q")
+spawn_point = NodePath("../Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=36390549]
+position = Vector2(767, 301)
+
 [connection signal="updated" from="Timesystem" to="CanvasLayer/HUD" method="_on_timesystem_updated"]
 [connection signal="balance_updated" from="MoneySystem" to="CanvasLayer/HUD" method="_on_money_system_balance_updated"]
+[connection signal="rating_decreased" from="RatingSystem" to="CanvasLayer/HUD" method="_on_rating_system_rating_decreased"]
+[connection signal="rating_increased" from="RatingSystem" to="CanvasLayer/HUD" method="_on_rating_system_rating_increased"]
 
 [editable path="Shop1"]
