@@ -1,17 +1,14 @@
 [gd_scene format=3 uid="uid://bgywu5sf0dh50"]
 
+[ext_resource type="Script" uid="uid://blp01jr4l1kno" path="res://src/scripts/main_menu/main_menu.gd" id="1_pmuqf"]
 [ext_resource type="Texture2D" uid="uid://b1xd2onrp4s7b" path="res://assets/sprites/menu/checkerboard.svg" id="1_tn18x"]
 [ext_resource type="Texture2D" uid="uid://cjbi0y4j5ocfk" path="res://assets/sprites/menu/logo.svg" id="2_ovsfe"]
 [ext_resource type="FontFile" uid="uid://f48sc3ctcqqq" path="res://assets/fonts/kenney_kenney-fonts/Fonts/Kenney Pixel Square.ttf" id="4_jvln8"]
 [ext_resource type="StyleBox" uid="uid://cbhxogrvek5m5" path="res://src/resources/menu/default_button.res" id="4_ksoms"]
 [ext_resource type="StyleBox" uid="uid://25hsc7ce6ghb" path="res://src/resources/menu/default_pressed_button.res" id="5_ksoms"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_jvln8"]
-font = ExtResource("4_jvln8")
-font_size = 24
-shadow_size = 0
-shadow_color = Color(0.11764706, 0.09803922, 0.078431375, 1)
-shadow_offset = Vector2(0, 2)
+[ext_resource type="LabelSettings" uid="uid://btig155ykl568" path="res://src/resources/menu/label_default_button.res" id="6_s84or"]
+[ext_resource type="PackedScene" uid="uid://sul2gjqfku2m" path="res://src/scenes/menus/main_menu_options.tscn" id="7_ib5j0"]
+[ext_resource type="PackedScene" uid="uid://b2outipushbvj" path="res://src/scenes/menus/main_menu_quit_confirmation.tscn" id="8_7yiml"]
 
 [sub_resource type="Animation" id="Animation_ovsfe"]
 length = 0.001
@@ -105,9 +102,12 @@ _data = {
 &"warung_rush_logo": SubResource("Animation_jvln8")
 }
 
-[node name="MainMenu" type="Control" unique_id=1973115185]
+[node name="MainMenu" type="Control" unique_id=1973115185 node_paths=PackedStringArray("options_modal", "quit_confirmation_modal")]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_pmuqf")
+options_modal = NodePath("MainMenuOptions")
+quit_confirmation_modal = NodePath("MainMenuQuitConfirmation")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=573440451]
 custom_minimum_size = Vector2(1280, 720)
@@ -174,7 +174,7 @@ layout_mode = 0
 offset_right = 280.0
 offset_bottom = 60.0
 text = "Play"
-label_settings = SubResource("LabelSettings_jvln8")
+label_settings = ExtResource("6_s84or")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -191,8 +191,8 @@ theme_override_styles/hover = ExtResource("4_ksoms")
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 60.0
-text = "OPTIONS"
-label_settings = SubResource("LabelSettings_jvln8")
+text = "Options"
+label_settings = ExtResource("6_s84or")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -209,10 +209,36 @@ theme_override_styles/hover = ExtResource("4_ksoms")
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 60.0
-text = "QUIT"
-label_settings = SubResource("LabelSettings_jvln8")
+text = "Quit"
+label_settings = ExtResource("6_s84or")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MainMenuQuitConfirmation" parent="." unique_id=727102976 instance=ExtResource("8_7yiml")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="MainMenuOptions" parent="." unique_id=1032847567 instance=ExtResource("7_ib5j0")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1280.0
+offset_bottom = 720.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=172700610]
 libraries/ = SubResource("AnimationLibrary_jvln8")
@@ -221,3 +247,6 @@ autoplay = &"checkerboard_loop"
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=1734840374]
 libraries/ = SubResource("AnimationLibrary_jvln8")
 autoplay = &"warung_rush_logo"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/ButtonMenu/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/ButtonMenu/QuitButton" to="." method="_on_quit_button_pressed"]
