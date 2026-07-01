@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ct1tmyu3bfi4q" path="res://src/scripts/minigame/box/box_dropzone.gd" id="1_e6bu4"]
 [ext_resource type="Texture2D" uid="uid://lepqpih3wan" path="res://assets/sprites/minigame/box/arrow_helper.svg" id="2_c6nnk"]
+[ext_resource type="AudioStream" uid="uid://dsoqo4irdjo6i" path="res://assets/audio/kenney_interface-sounds/Audio/confirmation_001.ogg" id="3_c6nnk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_neqb5"]
 size = Vector2(387.91968, 260.9643)
@@ -13,6 +14,9 @@ script = ExtResource("1_e6bu4")
 shape = SubResource("RectangleShape2D_neqb5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=551856863]
-position = Vector2(0, -450.82663)
+position = Vector2(0, -467.5238)
 scale = Vector2(18.275, 18.275)
 texture = ExtResource("2_c6nnk")
+
+[node name="SFX_Complete" type="AudioStreamPlayer" parent="." unique_id=1581323689]
+stream = ExtResource("3_c6nnk")

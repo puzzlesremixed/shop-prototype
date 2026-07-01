@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bar5sw1m30ff4"]
+
+[ext_resource type="Script" uid="uid://dp82je1rc7laa" path="res://src/scenes/menus/main_menu.gd" id="1_tn18x"]
+[ext_resource type="LabelSettings" path="res://src/fonts/momo_trust_display_heading.tres" id="2_ovsfe"]
+
+[node name="MainMenu" type="Node2D" unique_id=436448751]
+script = ExtResource("1_tn18x")
+
+[node name="Control" type="Control" parent="." unique_id=160993011]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1660489468]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.73333335, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=796240082]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hbox" type="HBoxContainer" parent="Control/CenterContainer" unique_id=2051250596]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/Hbox" unique_id=71068471]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/CenterContainer/Hbox/VBoxContainer" unique_id=1354045400]
+layout_mode = 2
+text = "grand"
+label_settings = ExtResource("2_ovsfe")
+
+[node name="Label2" type="Label" parent="Control/CenterContainer/Hbox/VBoxContainer" unique_id=1911540920]
+layout_mode = 2
+text = "trolley"
+label_settings = ExtResource("2_ovsfe")
+
+[node name="Label3" type="Label" parent="Control/CenterContainer/Hbox/VBoxContainer" unique_id=1920892396]
+layout_mode = 2
+text = "adventure"
+label_settings = ExtResource("2_ovsfe")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/CenterContainer/Hbox" unique_id=1173349047]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/CenterContainer/Hbox/VBoxContainer2" unique_id=1235903748]
+layout_mode = 2
+text = "Start"

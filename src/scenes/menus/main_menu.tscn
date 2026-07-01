@@ -1,62 +1,223 @@
-[gd_scene format=3 uid="uid://bar5sw1m30ff4"]
+[gd_scene format=3 uid="uid://bgywu5sf0dh50"]
 
 [ext_resource type="Script" uid="uid://dp82je1rc7laa" path="res://src/scenes/menus/main_menu.gd" id="1_tn18x"]
 [ext_resource type="LabelSettings" uid="uid://deufaos8rtttc" path="res://src/fonts/momo_trust_display_heading.tres" id="2_ovsfe"]
+[ext_resource type="Texture2D" uid="uid://b1xd2onrp4s7b" path="res://assets/sprites/menu/checkerboard.svg" id="1_tn18x"]
+[ext_resource type="Texture2D" uid="uid://cjbi0y4j5ocfk" path="res://assets/sprites/menu/logo.svg" id="2_ovsfe"]
+[ext_resource type="Texture2D" uid="uid://dekpwwx22vorh" path="res://assets/sprites/menu/buttons_texture.png" id="3_jvln8"]
+[ext_resource type="FontFile" uid="uid://wx3vfviyy5n2" path="res://src/fonts/import/MomoTrustSans-VariableFont_wght.ttf" id="4_ksoms"]
 
-[node name="MainMenu" type="Node2D" unique_id=436448751]
-script = ExtResource("1_tn18x")
+[sub_resource type="Animation" id="Animation_ovsfe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1280, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(340, 155)]
+}
 
-[node name="Control" type="Control" parent="." unique_id=160993011]
-custom_minimum_size = Vector2(1280, 720)
+[sub_resource type="Animation" id="Animation_123ln"]
+resource_name = "checkerboard_loop"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1066.38, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1280, 0), Vector2(213.64, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jvln8"]
+resource_name = "warung_rush_logo"
+length = 3.0000000000000004
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(340, 155), Vector2(340, 160), Vector2(340, 150), Vector2(340, 155)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jvln8"]
+_data = {
+&"RESET": SubResource("Animation_ovsfe"),
+&"checkerboard_loop": SubResource("Animation_123ln"),
+&"warung_rush_logo": SubResource("Animation_jvln8")
+}
+
+[node name="MainMenu" type="Control" unique_id=1973115185]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1660489468]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="ColorRect" type="ColorRect" parent="." unique_id=573440451]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.73333335, 0, 1)
+color = Color(0.8980392, 0.79607844, 0.5647059, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=796240082]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Background" type="TextureRect" parent="." unique_id=628519281]
+custom_maximum_size = Vector2(1280, 720)
+layout_mode = 0
+offset_left = -1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_tn18x")
 
-[node name="Hbox" type="HBoxContainer" parent="Control/CenterContainer" unique_id=2051250596]
+[node name="Background2" type="TextureRect" parent="." unique_id=517820912]
+custom_maximum_size = Vector2(1280, 720)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_tn18x")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=422702812]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 0
+offset_left = 340.0
+offset_top = 155.0
+offset_right = 940.0
+offset_bottom = 355.0003
+size_flags_horizontal = 4
+texture = ExtResource("2_ovsfe")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=586734438]
+layout_mode = 0
+offset_top = 140.0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1945115046]
 layout_mode = 2
-alignment = 1
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 500
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/Hbox" unique_id=71068471]
+[node name="ButtonMenu" type="VBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=2120611590]
 layout_mode = 2
-alignment = 1
+theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="Control/CenterContainer/Hbox/VBoxContainer" unique_id=1354045400]
+[node name="PlayButton" type="NinePatchRect" parent="VBoxContainer/MarginContainer/ButtonMenu" unique_id=1040042864]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-text = "grand"
-label_settings = ExtResource("2_ovsfe")
+texture = ExtResource("3_jvln8")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 7
 
-[node name="Label2" type="Label" parent="Control/CenterContainer/Hbox/VBoxContainer" unique_id=1911540920]
-layout_mode = 2
-text = "trolley"
-label_settings = ExtResource("2_ovsfe")
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ButtonMenu/PlayButton" unique_id=1641806593]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("4_ksoms")
+theme_override_font_sizes/font_size = 20
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="Control/CenterContainer/Hbox/VBoxContainer" unique_id=1920892396]
+[node name="OptionsButton" type="NinePatchRect" parent="VBoxContainer/MarginContainer/ButtonMenu" unique_id=1444784298]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-text = "adventure"
-label_settings = ExtResource("2_ovsfe")
+texture = ExtResource("3_jvln8")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 7
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/CenterContainer/Hbox" unique_id=1173349047]
-custom_minimum_size = Vector2(420, 0)
-layout_mode = 2
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ButtonMenu/OptionsButton" unique_id=1794759170]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("4_ksoms")
+theme_override_font_sizes/font_size = 20
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Control/CenterContainer/Hbox/VBoxContainer2" unique_id=1235903748]
+[node name="QuitButton" type="NinePatchRect" parent="VBoxContainer/MarginContainer/ButtonMenu" unique_id=74020259]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-text = "Start"
+texture = ExtResource("3_jvln8")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 7
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ButtonMenu/QuitButton" unique_id=964219803]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("4_ksoms")
+theme_override_font_sizes/font_size = 20
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=172700610]
+libraries/ = SubResource("AnimationLibrary_jvln8")
+autoplay = &"checkerboard_loop"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=1734840374]
+libraries/ = SubResource("AnimationLibrary_jvln8")
+autoplay = &"warung_rush_logo"

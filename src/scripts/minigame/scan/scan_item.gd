@@ -1,5 +1,5 @@
 @tool
-class_name ShopItem
+class_name ScanItem
 extends Area2D
 
 enum ItemType {MILK, CARROT, SHAMPOO, SNACK, TOOTHBRUSH}
@@ -14,8 +14,13 @@ const SPRITES = {
 
 var is_dragging: bool = false
 var mouse_offset: Vector2 = Vector2.ZERO
+var scanned: bool = false
+var _scan_id: int = 0
 
 @onready var original_position: Vector2 = global_position
+@onready var sfx_drop: AudioStreamPlayer = $SFX_Drop
+
+@export var scan_duration: float = 0.6
 @export var item_type: ItemType = ItemType.MILK:
 	set(value):
 		item_type = value
@@ -67,18 +72,17 @@ func _try_drop_item() -> void:
 	var successfully_placed = false
 	
 	for area in overlapping_areas:
-		if area.is_in_group("drop_zones") and not area.is_occupied:
-			if area.acceptable == self.item_type:
+		if area.is_in_group("bag_dropzone"):
+			if scanned:
 				# Snap to the center of the shelf slot
 				global_position = area.global_position
-				area.occupy_zone(self)
+				area.submit(self)
 				successfully_placed = true
-				$SFX_Drop.play()
-				break
+
 			else:
-				SplashUI.show_popup("Incorrect Placement!", 1.0, SplashUI.PopupType.DESTRUCTIVE)
+				SplashUI.show_popup("Scan Item First!", 1.0, SplashUI.PopupType.DESTRUCTIVE)
 				$SFX_InvalidPlacement.play()
-				ItemReference.play_camera_shake()
+				ScanManager.play_camera_shake()
 							
 	if not successfully_placed:
 		# Smoothly slide back to the basket
@@ -86,3 +90,23 @@ func _try_drop_item() -> void:
 		tween.tween_property(self, "global_position", original_position, 0.25) \
 			.set_trans(Tween.TRANS_CUBIC) \
 			.set_ease(Tween.EASE_OUT)
+
+func scan() -> void:
+	if scanned:
+		return # Prevent re-scanning an already scanned item
+		
+	_scan_id += 1
+	var current_scan_id = _scan_id
+
+	# Wait for scan duration
+	await get_tree().create_timer(scan_duration).timeout
+	
+	# If the ID changed while we were waiting, it means the item exited the zone
+	if current_scan_id == _scan_id:
+		$SFX_Scan.play()
+		scanned = true
+
+func cancel_scan() -> void:
+	# Incrementing the ID acts as a cancellation. 
+	# The previous timer will still finish, but it will fail the "if" check.
+	_scan_id += 1
