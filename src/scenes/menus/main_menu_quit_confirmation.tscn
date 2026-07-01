@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://b2outipushbvj"]
+
+[ext_resource type="Script" uid="uid://d1x5c4vj7pxur" path="res://src/scripts/main_menu/main_menu_quit_confirmation.gd" id="1_lyanp"]
+[ext_resource type="Texture2D" uid="uid://s8ypdry2py8p" path="res://assets/sprites/ui.png" id="2_rvhy2"]
+[ext_resource type="LabelSettings" uid="uid://c68kkvvtccdrf" path="res://src/resources/menu/label_section.res" id="3_agafm"]
+[ext_resource type="LabelSettings" uid="uid://ow7ayy8e6tmu" path="res://src/resources/menu/label_menu_item.res" id="4_nusxr"]
+[ext_resource type="FontFile" uid="uid://f48sc3ctcqqq" path="res://assets/fonts/kenney_kenney-fonts/Fonts/Kenney Pixel Square.ttf" id="8_jhf8m"]
+[ext_resource type="StyleBox" uid="uid://cbhxogrvek5m5" path="res://src/resources/menu/default_button.res" id="9_8mgdm"]
+[ext_resource type="StyleBox" uid="uid://25hsc7ce6ghb" path="res://src/resources/menu/default_pressed_button.res" id="10_md6jt"]
+[ext_resource type="LabelSettings" uid="uid://btig155ykl568" path="res://src/resources/menu/label_default_button.res" id="11_1cvef"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xyp6d"]
+texture = ExtResource("2_rvhy2")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="MainMenuQuitConfirmation" type="Control" unique_id=727102976]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -4.0
+offset_right = -12.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lyanp")
+
+[node name="Modal" type="PanelContainer" parent="." unique_id=2085640570]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -77.0
+offset_right = 139.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xyp6d")
+
+[node name="MarginContainer" type="MarginContainer" parent="Modal" unique_id=943145070]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Modal/MarginContainer" unique_id=1886772843]
+layout_mode = 2
+
+[node name="ConfirmationSection" type="Label" parent="Modal/MarginContainer/VBoxContainer" unique_id=1836980041]
+layout_mode = 2
+text = "Confirmation"
+label_settings = ExtResource("3_agafm")
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Modal/MarginContainer/VBoxContainer" unique_id=1758538615]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="QuitConfirmationTextContainer" type="HBoxContainer" parent="Modal/MarginContainer/VBoxContainer" unique_id=805603150]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Modal/MarginContainer/VBoxContainer/QuitConfirmationTextContainer" unique_id=1723249506]
+layout_mode = 2
+
+[node name="QuitConfirmationText" type="Label" parent="Modal/MarginContainer/VBoxContainer/QuitConfirmationTextContainer/MarginContainer" unique_id=1633431583]
+layout_mode = 2
+text = "Are you sure you want to 
+quit the game?"
+label_settings = ExtResource("4_nusxr")
+horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="Modal/MarginContainer/VBoxContainer" unique_id=2052388847]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Modal/MarginContainer/VBoxContainer" unique_id=3668810]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CancelButton" type="Button" parent="Modal/MarginContainer/VBoxContainer/HBoxContainer" unique_id=195891534]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_jhf8m")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("9_8mgdm")
+theme_override_styles/pressed = ExtResource("10_md6jt")
+theme_override_styles/hover = ExtResource("9_8mgdm")
+
+[node name="Label" type="Label" parent="Modal/MarginContainer/VBoxContainer/HBoxContainer/CancelButton" unique_id=552252032]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -16.0
+offset_right = 50.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cancel"
+label_settings = ExtResource("11_1cvef")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Modal/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1809690706]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="Modal/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1650233472]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_jhf8m")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("9_8mgdm")
+theme_override_styles/pressed = ExtResource("10_md6jt")
+theme_override_styles/hover = ExtResource("9_8mgdm")
+
+[node name="Label" type="Label" parent="Modal/MarginContainer/VBoxContainer/HBoxContainer/QuitButton" unique_id=1268346661]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -16.0
+offset_right = 50.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+label_settings = ExtResource("11_1cvef")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Modal/MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Modal/MarginContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
