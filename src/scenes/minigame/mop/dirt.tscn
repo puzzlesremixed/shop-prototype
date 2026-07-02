@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bylaac73mdnk3"]
+
+[ext_resource type="Script" uid="uid://b371iqx114n44" path="res://src/scripts/minigame/mop/dirt.gd" id="1_eqp3h"]
+[ext_resource type="AudioStream" uid="uid://dsoqo4irdjo6i" path="res://assets/audio/kenney_interface-sounds/Audio/confirmation_001.ogg" id="2_gua1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neqb5"]
+size = Vector2(240, 240)
+
+[node name="Dirt" type="Area2D" unique_id=1025165737]
+script = ExtResource("1_eqp3h")
+
+[node name="SFX_Complete" type="AudioStreamPlayer" parent="." unique_id=52690456]
+stream = ExtResource("2_gua1d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1512827993]
+position = Vector2(-4.5, -14)
+shape = SubResource("RectangleShape2D_neqb5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=166041482 groups=["dirt"]]
+scale = Vector2(4, 4)

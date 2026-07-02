@@ -14,6 +14,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if disabled:
 		return
+	
 	var current_mouse_pos = get_global_mouse_position()
 	global_position = current_mouse_pos
 	
@@ -36,7 +37,7 @@ func _input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> voi
 			if not sfx_mop_tiles.playing:
 				sfx_mop_tiles.play(1.2)
 			
-			scrub_accumulated = 0.0 
+			scrub_accumulated = 0.0
 			
 			viewport.set_input_as_handled()
 		else:
@@ -56,5 +57,5 @@ func _input(event: InputEvent) -> void:
 func _clean_overlapping_areas() -> void:
 	var overlapping_areas = get_overlapping_areas()
 	for area in overlapping_areas:
-		if area.is_in_group("mop_tiles"):
+		if area.is_in_group("dirt") and area.has_method("clean"):
 			area.clean(10)

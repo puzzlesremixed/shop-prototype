@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://rfuthvi5qrpg" path="res://src/scripts/minigame/mop/mop_minigame_trigger.gd" id="1_8l84e"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_neqb5"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_neqb5"]
 size = Vector2(148, 156)
 
@@ -11,8 +9,7 @@ size = Vector2(148, 156)
 script = ExtResource("1_8l84e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1850610323]
-scale = Vector2(64, 64)
-texture = SubResource("PlaceholderTexture2D_neqb5")
+position = Vector2(32, 32)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=221473658]
 

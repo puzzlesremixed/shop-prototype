@@ -14,6 +14,7 @@ enum MinigameTransitionSide {LEFT, RIGHT, CENTER}
 var last_facing := "Up"
 var in_minigame: bool = false
 var camera_tween: Tween
+var zoom_tween: Tween
 var camera: Camera2D
 
 func _ready() -> void:
@@ -21,6 +22,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if in_minigame:
+		animated_sprite.play("Idle_" + last_facing)
 		return
 
 	var input_dir := Input.get_vector("left", "right", "up", "down")
@@ -66,17 +68,26 @@ func shift_camera_minigame(minigame_transition_side: MinigameTransitionSide) -> 
 	if camera:
 		if camera_tween and camera_tween.is_running():
 			camera_tween.kill()
+		if zoom_tween and zoom_tween.is_running():
+			zoom_tween.kill()
 			
 		camera_tween = create_tween()
+		zoom_tween = create_tween()
 
 		if minigame_transition_side == MinigameTransitionSide.LEFT:
 			camera_tween.tween_property(camera, "offset", -minigame_cam_transition_offset, minigame_cam_transition_duration) \
 				.set_trans(Tween.TRANS_LINEAR)
-
+				
 		elif minigame_transition_side == MinigameTransitionSide.RIGHT:
 			camera_tween.tween_property(camera, "offset", minigame_cam_transition_offset, minigame_cam_transition_duration) \
 				.set_trans(Tween.TRANS_LINEAR)
 
+			zoom_tween.tween_property(camera, "zoom", Vector2(2, 2), minigame_cam_transition_duration) \
+							.set_trans(Tween.TRANS_LINEAR)
+							
 		elif minigame_transition_side == MinigameTransitionSide.CENTER:
 			camera_tween.tween_property(camera, "offset", Vector2.ZERO, minigame_cam_transition_duration) \
 				.set_trans(Tween.TRANS_LINEAR)
+
+			zoom_tween.tween_property(camera, "zoom", Vector2(1.5, 1.5), minigame_cam_transition_duration) \
+							.set_trans(Tween.TRANS_LINEAR)

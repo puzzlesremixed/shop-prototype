@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fcfvnij3tffa"
-path="res://.godot/imported/mop_tile_clean.png-4af20eb3469864b32f3f6978be652a29.ctex"
+uid="uid://c4oot4ev6xnxe"
+path="res://.godot/imported/stain_2.png-cd6d1729a8a46bfc27a6532dad21d34b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/minigame/mop/mop_tile_clean.png"
-dest_files=["res://.godot/imported/mop_tile_clean.png-4af20eb3469864b32f3f6978be652a29.ctex"]
+source_file="res://assets/sprites/minigame/mop/stain_2.png"
+dest_files=["res://.godot/imported/stain_2.png-cd6d1729a8a46bfc27a6532dad21d34b.ctex"]
 
 [params]
 

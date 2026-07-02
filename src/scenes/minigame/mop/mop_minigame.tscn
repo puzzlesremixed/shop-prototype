@@ -1,288 +1,134 @@
 [gd_scene format=3 uid="uid://yrslf4pb5aq7"]
 
 [ext_resource type="Texture2D" uid="uid://cr4ts4fv5do7q" path="res://assets/sprites/minigame/mop/panel.svg" id="1_7mmsj"]
-[ext_resource type="Texture2D" uid="uid://fcfvnij3tffa" path="res://assets/sprites/minigame/mop/mop_tile_clean.png" id="2_sindb"]
 [ext_resource type="Texture2D" uid="uid://cl64t7yphvtvg" path="res://assets/sprites/minigame/mop/mop.png" id="3_ox7lh"]
-[ext_resource type="Script" uid="uid://b371iqx114n44" path="res://src/scripts/minigame/mop/mop_tile.gd" id="4_f527q"]
 [ext_resource type="Script" uid="uid://ewxfor26qq3s" path="res://src/scripts/minigame/mop/mop.gd" id="4_ox7lh"]
 [ext_resource type="AudioStream" uid="uid://i4wmh1upfn44" path="res://assets/audio/pixabay/loop-trim-pixabay-mrstokes302-mopping-floor-sfx-mrstokes302-444642.ogg" id="4_y40o4"]
-[ext_resource type="Shader" uid="uid://hp1n6lisvruh" path="res://src/shaders/minigame/mop/mop_tile.gdshader" id="5_q6evg"]
-[ext_resource type="Texture2D" uid="uid://cgjui8lg41d2u" path="res://assets/sprites/minigame/mop/mop_tile_dirty.png" id="7_rl67s"]
-[ext_resource type="AudioStream" uid="uid://dsoqo4irdjo6i" path="res://assets/audio/kenney_interface-sounds/Audio/confirmation_001.ogg" id="8_rhpt7"]
+[ext_resource type="PackedScene" uid="uid://bylaac73mdnk3" path="res://src/scenes/minigame/mop/dirt.tscn" id="5_rhpt7"]
+[ext_resource type="Texture2D" uid="uid://bggpdhf3g421a" path="res://src/resources/minigame/mop/mop_tile.res" id="7_rhpt7"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6evg"]
-shader = ExtResource("5_q6evg")
-shader_parameter/texture2 = ExtResource("2_sindb")
-shader_parameter/blend_amount = 0.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neqb5"]
+size = Vector2(293.19482, 64.26017)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tigac"]
+size = Vector2(279.80234, 85.9388)
+
+[sub_resource type="Animation" id="Animation_rl67s"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameArea:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1680, 418)]
+}
+
+[sub_resource type="Animation" id="Animation_rhpt7"]
+resource_name = "slide_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameArea:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1680, 418), Vector2(909, 418)]
+}
 
 [sub_resource type="Animation" id="Animation_y40o4"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1680, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Panel:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(418.84686, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mop:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1680, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Mop:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(625, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("MopTile:position:x")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1680, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("MopTile:position:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(421, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_ykppu"]
-resource_name = "slide_in"
-length = 0.8
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1680, -0.25, 0, 0.25, 0, 910, -0.20000002, 128.33334, 0, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Panel:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(418.84686, -0.25, 0, 0.25, 0, 418.84686, -0.20000002, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mop:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1680, -0.25, 0, 0.25, 0, 910, -0.20000002, 128.33334, 0, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Mop:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(625, -0.25, 0, 0.25, 0, 625, -0.20000002, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("MopTile:position:x")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1680, -0.25, 0, 0.25, 0, 910, -0.20000002, 128.33334, 0, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("MopTile:position:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(421, -0.25, 0, 0.25, 0, 421, -0.20000002, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-
-[sub_resource type="Animation" id="Animation_2wh7d"]
 resource_name = "slide_out"
-length = 0.8
-tracks/0/type = "bezier"
+length = 0.5
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MopTile:position:x")
-tracks/0/interp = 1
+tracks/0/path = NodePath("GameArea:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(910.63, -0.25, 0, 0.25, 0, 1680, -0.20000002, -128.22835, 0, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MopTile:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(421, -0.25, 0, 0.25, 0, 421, -0.20000002, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Panel:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(910.63, -0.25, 0, 0.25, 0, 1680, -0.20000002, -128.22835, 0, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Panel:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(418.84686, -0.25, 0, 0.25, 0, 418.84686, -0.20000002, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Mop:position:x")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(910.63, -0.25, 0, 0.25, 0, 1680, -0.20000002, -128.22835, 0, 0),
-"times": PackedFloat32Array(0, 0.8)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Mop:position:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(625, -0.25, 0, 0.25, 0, 625, -0.20000002, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.8)
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(909, 418), Vector2(1680, 418)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2wh7d"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y40o4"]
 _data = {
-&"RESET": SubResource("Animation_y40o4"),
-&"slide_in": SubResource("Animation_ykppu"),
-&"slide_out": SubResource("Animation_2wh7d")
+&"RESET": SubResource("Animation_rl67s"),
+&"slide_in": SubResource("Animation_rhpt7"),
+&"slide_out": SubResource("Animation_y40o4")
 }
 
 [node name="MopMinigame" type="CanvasLayer" unique_id=1820309572]
 
-[node name="Panel" type="Sprite2D" parent="." unique_id=744175165]
+[node name="GameArea" type="Node2D" parent="." unique_id=2104946208]
+position = Vector2(1680, 418)
+
+[node name="Panel" type="Sprite2D" parent="GameArea" unique_id=744175165]
 clip_children = 2
-position = Vector2(1680, 418.84686)
 scale = Vector2(0.6091549, 0.6091549)
 texture = ExtResource("1_7mmsj")
 
-[node name="Mop" type="Area2D" parent="." unique_id=2069426507]
+[node name="Mop" type="Area2D" parent="GameArea" unique_id=2069426507]
 z_index = 1
-position = Vector2(1680, 625)
+position = Vector2(-32, 11)
 script = ExtResource("4_ox7lh")
 
-[node name="MopSprite" type="Sprite2D" parent="Mop" unique_id=941884617]
-scale = Vector2(0.45973888, 0.45973888)
+[node name="MopSprite" type="Sprite2D" parent="GameArea/Mop" unique_id=941884617]
+position = Vector2(21.18, -11.565)
+rotation = 0.6981317
+scale = Vector2(8, 8)
 texture = ExtResource("3_ox7lh")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mop" unique_id=956885435]
-polygon = PackedVector2Array(-47, 33, 115, -135, -7, -222, -8, -251, 21, -286, 289, -82, 289, -70, 229, -59, 135, -120, 14, 80)
-
-[node name="SFX_MopTiles" type="AudioStreamPlayer" parent="Mop" unique_id=535993040]
+[node name="SFX_MopTiles" type="AudioStreamPlayer" parent="GameArea/Mop" unique_id=535993040]
 stream = ExtResource("4_y40o4")
 parameters/looping = true
 
-[node name="MopTile" type="Area2D" parent="." unique_id=1189979856 node_paths=PackedStringArray("finish_animation", "mop") groups=["mop_tiles"]]
-position = Vector2(1680, 421)
-script = ExtResource("4_f527q")
-finish_animation = NodePath("../AnimationPlayer2")
-mop = NodePath("../Mop")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea/Mop" unique_id=660264037]
+position = Vector2(70.72308, -62.094788)
+rotation = -0.87266463
+shape = SubResource("RectangleShape2D_neqb5")
 
-[node name="MopTileMask" type="Sprite2D" parent="MopTile" unique_id=2060480559]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GameArea/Mop" unique_id=1285835945]
+position = Vector2(138.8844, -148.49927)
+rotation = 0.6981317
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_tigac")
+
+[node name="MopTileActual" type="Node2D" parent="GameArea" unique_id=1194654144]
+
+[node name="MopTileMask" type="Sprite2D" parent="GameArea/MopTileActual" unique_id=2066293469]
 clip_children = 2
 scale = Vector2(0.59708244, 0.59708244)
 texture = ExtResource("1_7mmsj")
 
-[node name="MopTile" type="Sprite2D" parent="MopTile/MopTileMask" unique_id=2093072540]
-material = SubResource("ShaderMaterial_q6evg")
-position = Vector2(12.325989, -7.7931824)
-scale = Vector2(1.0904204, 1.0904204)
-texture = ExtResource("7_rl67s")
-region_rect = Rect2(0, 0, 1149, 928)
+[node name="TextureRect" type="TextureRect" parent="GameArea/MopTileActual/MopTileMask" unique_id=2112617453]
+offset_left = -618.0051
+offset_top = -522.5409
+offset_right = 638.1028
+offset_bottom = 522.5409
+texture = ExtResource("7_rhpt7")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MopTile" unique_id=696280405]
-position = Vector2(59, 12)
-polygon = PackedVector2Array(-195, -121, -88, -154, -57, -132, 3, -119, 40, -88, 60, -59, 79, -26, 42, 3, -10, 21, -20, 80, 0, 82, 69, 95, 143, 128, 157, 164, 173, 210, 175, 239, 116, 271, 52, 265, 6, 275, -59, 276, -96, 250, -127, 198, -145, 133, -187, 142, -245, 109, -253, 75, -291, 44, -332, -18, -260, -54, -246, -69, -221, -103)
+[node name="Dirt" parent="GameArea" unique_id=1025165737 node_paths=PackedStringArray("finish_animation", "mop", "minigame_instance", "second_visual_feedback") groups=["dirt"] instance=ExtResource("5_rhpt7")]
+finish_animation = NodePath("../../SlideOutAnimation")
+mop = NodePath("../Mop")
+minigame_instance = NodePath("../..")
+second_visual_feedback = NodePath("../Mop/MopSprite")
 
-[node name="SFX_Complete" type="AudioStreamPlayer" parent="MopTile" unique_id=170549194]
-stream = ExtResource("8_rhpt7")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1280539171]
-libraries/ = SubResource("AnimationLibrary_2wh7d")
+[node name="SlideInAnimation" type="AnimationPlayer" parent="." unique_id=619436889]
+libraries/ = SubResource("AnimationLibrary_y40o4")
 autoplay = &"slide_in"
+playback_auto_capture_transition_type = 7
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=1314424373]
-libraries/ = SubResource("AnimationLibrary_2wh7d")
+[node name="SlideOutAnimation" type="AnimationPlayer" parent="." unique_id=1621709576]
+libraries/ = SubResource("AnimationLibrary_y40o4")
+playback_auto_capture_transition_type = 7
+playback_auto_capture_ease_type = 1
