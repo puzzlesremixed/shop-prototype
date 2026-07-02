@@ -1,13 +1,28 @@
+class_name Player
+
 extends CharacterBody2D
 
+enum MinigameTransitionSide {LEFT, RIGHT, CENTER}
+
 @export var SPEED := 300.0
+@export var minigame_cam_transition_offset: Vector2 = Vector2(250, 0)
+@export var minigame_cam_transition_duration: float = 0.6
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-
-# This face up by default
 @onready var interaction_area: Area2D = $InteractionArea
-var last_facing := "Up"
 
-func _physics_process(delta: float) -> void:
+var last_facing := "Up"
+var in_minigame: bool = false
+var camera_tween: Tween
+var camera: Camera2D
+
+func _ready() -> void:
+	camera = get_viewport().get_camera_2d()
+
+func _physics_process(_delta: float) -> void:
+	if in_minigame:
+		return
+
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 
 	velocity = input_dir * SPEED
@@ -46,3 +61,22 @@ func update_interaction_area() -> void:
 			interaction_area.rotation_degrees = 180
 		"Left":
 			interaction_area.rotation_degrees = -90
+
+func shift_camera_minigame(minigame_transition_side: MinigameTransitionSide) -> void:
+	if camera:
+		if camera_tween and camera_tween.is_running():
+			camera_tween.kill()
+			
+		camera_tween = create_tween()
+
+		if minigame_transition_side == MinigameTransitionSide.LEFT:
+			camera_tween.tween_property(camera, "offset", -minigame_cam_transition_offset, minigame_cam_transition_duration) \
+				.set_trans(Tween.TRANS_LINEAR)
+
+		elif minigame_transition_side == MinigameTransitionSide.RIGHT:
+			camera_tween.tween_property(camera, "offset", minigame_cam_transition_offset, minigame_cam_transition_duration) \
+				.set_trans(Tween.TRANS_LINEAR)
+
+		elif minigame_transition_side == MinigameTransitionSide.CENTER:
+			camera_tween.tween_property(camera, "offset", Vector2.ZERO, minigame_cam_transition_duration) \
+				.set_trans(Tween.TRANS_LINEAR)

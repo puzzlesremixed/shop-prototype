@@ -2,26 +2,28 @@ extends CharacterBody2D
 class_name Guest
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@export var shopping_list: Array[shop_items]
-@export var debug_pathfind_line : Line2D
-@export var speed: float = 150.0 
-@onready var interaction_area: Area2D = $InteractionArea
 @onready var browsing_timer: Timer = $BrowsingTimer
+@onready var interaction_area: Area2D = $InteractionArea
 @onready var label: Label = $Label
+
+@export var shopping_list: Array[shop_items]
+@export var debug_pathfind_line: Line2D
+@export var speed: float = 150.0
 
 var TILE_SIZE: int = 32
 var tilemap_layer: TileMapLayer
-var pathfinding_grid : AStarGrid2D = AStarGrid2D.new()
-var path_to_destination : Array = []
-var target_position : Vector2 = Vector2.ZERO
+var pathfinding_grid: AStarGrid2D = AStarGrid2D.new()
+var path_to_destination: Array = []
+var target_position: Vector2 = Vector2.ZERO
 
 var destination: Shelf
 var shopping_routes: Array[Shelf];
-var current_shelf: int  = 0;
+var current_shelf: int = 0;
 var collected_items: Array[shop_items];
 
-var is_moving : bool = false
-var last_direction : String = "Down" 
+var is_moving: bool = false
+var last_direction: String = "Down"
+var stepped_on_dirt: bool = false
 
 enum State {
 	SHOPPING,
@@ -66,7 +68,7 @@ func _ready() -> void:
 	pathfinding_grid.region = tilemap_layer.get_used_rect()
 	pathfinding_grid.cell_size = Vector2(TILE_SIZE, TILE_SIZE)
 	pathfinding_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	pathfinding_grid.update() 
+	pathfinding_grid.update()
 	
 	# STEP 1: Block out the entire map region completely
 	var region = pathfinding_grid.region
@@ -187,14 +189,13 @@ func check_shelf(shelf: Shelf):
 	browsing_timer.start()
 	var found = shelf.take_requested_items(shopping_list)
 		
-	for item in found: 
+	for item in found:
 		shopping_list.erase(item)
 		var names_string = ", ".join(shopping_list.map(func(p): return p.name))
 		label.text = names_string
 		collected_items.append(item)
 	
 func arrived_at_shelf() -> void:
-
 	check_shelf(destination)
 	
 	if shopping_list.is_empty():

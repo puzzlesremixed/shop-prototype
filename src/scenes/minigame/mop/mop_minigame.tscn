@@ -15,17 +15,233 @@ shader = ExtResource("5_q6evg")
 shader_parameter/texture2 = ExtResource("2_sindb")
 shader_parameter/blend_amount = 0.0
 
-[node name="MopMinigame" type="Node2D" unique_id=222995902]
+[sub_resource type="Animation" id="Animation_y40o4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1680, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(418.84686, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mop:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1680, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mop:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(625, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MopTile:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1680, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MopTile:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(421, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ykppu"]
+resource_name = "slide_in"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1680, -0.25, 0, 0.25, 0, 910, -0.20000002, 128.33334, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(418.84686, -0.25, 0, 0.25, 0, 418.84686, -0.20000002, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mop:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1680, -0.25, 0, 0.25, 0, 910, -0.20000002, 128.33334, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mop:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(625, -0.25, 0, 0.25, 0, 625, -0.20000002, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MopTile:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1680, -0.25, 0, 0.25, 0, 910, -0.20000002, 128.33334, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MopTile:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(421, -0.25, 0, 0.25, 0, 421, -0.20000002, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+
+[sub_resource type="Animation" id="Animation_2wh7d"]
+resource_name = "slide_out"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MopTile:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(910.63, -0.25, 0, 0.25, 0, 1680, -0.20000002, -128.22835, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MopTile:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(421, -0.25, 0, 0.25, 0, 421, -0.20000002, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(910.63, -0.25, 0, 0.25, 0, 1680, -0.20000002, -128.22835, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(418.84686, -0.25, 0, 0.25, 0, 418.84686, -0.20000002, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mop:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(910.63, -0.25, 0, 0.25, 0, 1680, -0.20000002, -128.22835, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mop:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(625, -0.25, 0, 0.25, 0, 625, -0.20000002, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2wh7d"]
+_data = {
+&"RESET": SubResource("Animation_y40o4"),
+&"slide_in": SubResource("Animation_ykppu"),
+&"slide_out": SubResource("Animation_2wh7d")
+}
+
+[node name="MopMinigame" type="CanvasLayer" unique_id=1820309572]
 
 [node name="Panel" type="Sprite2D" parent="." unique_id=744175165]
 clip_children = 2
-position = Vector2(910.63025, 418.84686)
+position = Vector2(1680, 418.84686)
 scale = Vector2(0.6091549, 0.6091549)
 texture = ExtResource("1_7mmsj")
 
 [node name="Mop" type="Area2D" parent="." unique_id=2069426507]
 z_index = 1
-position = Vector2(660, 625)
+position = Vector2(1680, 625)
 script = ExtResource("4_ox7lh")
 
 [node name="MopSprite" type="Sprite2D" parent="Mop" unique_id=941884617]
@@ -39,9 +255,11 @@ polygon = PackedVector2Array(-47, 33, 115, -135, -7, -222, -8, -251, 21, -286, 2
 stream = ExtResource("4_y40o4")
 parameters/looping = true
 
-[node name="MopTile" type="Area2D" parent="." unique_id=1189979856 groups=["mop_tiles"]]
-position = Vector2(913, 421)
+[node name="MopTile" type="Area2D" parent="." unique_id=1189979856 node_paths=PackedStringArray("finish_animation", "mop") groups=["mop_tiles"]]
+position = Vector2(1680, 421)
 script = ExtResource("4_f527q")
+finish_animation = NodePath("../AnimationPlayer2")
+mop = NodePath("../Mop")
 
 [node name="MopTileMask" type="Sprite2D" parent="MopTile" unique_id=2060480559]
 clip_children = 2
@@ -61,3 +279,10 @@ polygon = PackedVector2Array(-195, -121, -88, -154, -57, -132, 3, -119, 40, -88,
 
 [node name="SFX_Complete" type="AudioStreamPlayer" parent="MopTile" unique_id=170549194]
 stream = ExtResource("8_rhpt7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1280539171]
+libraries/ = SubResource("AnimationLibrary_2wh7d")
+autoplay = &"slide_in"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=1314424373]
+libraries/ = SubResource("AnimationLibrary_2wh7d")
