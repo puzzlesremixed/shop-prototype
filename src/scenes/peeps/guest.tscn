@@ -388,20 +388,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Guest" type="CharacterBody2D" unique_id=82853052 node_paths=PackedStringArray("debug_pathfind_line")]
+[node name="Guest" type="CharacterBody2D" unique_id=82853052 groups=["guest"]]
 y_sort_enabled = true
 collision_layer = 128
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_j8asl")
-debug_pathfind_line = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1178857422]
 shape = SubResource("CircleShape2D_yvt0r")
 
-[node name="InteractionArea" type="Area2D" parent="." unique_id=262356294]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=262356294 groups=["guest"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1396015761]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1396015761 groups=["guest"]]
 position = Vector2(1, -33)
 shape = SubResource("RectangleShape2D_20lvh")
 debug_color = Color(0.7441144, 0.46146715, 0.1358765, 0.41960785)
